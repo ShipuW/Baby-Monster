@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D rb2d;       //Store a reference to the Rigidbody2D component required to use 2D Physics.
     public Rigidbody2D bullet;                // 子弹 Prefab
 
+
+    public VJHandler jsMovement;
+    private Vector3 direction;
     // Use this for initialization
     void Start()
     {
@@ -20,14 +23,26 @@ public class PlayerController : MonoBehaviour {
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     void FixedUpdate()
     {
-        //Store the current horizontal input in the float moveHorizontal.
-        float moveHorizontal = Input.GetAxis ("Horizontal");
 
-        //Store the current vertical input in the float moveVertical.
-        float moveVertical = Input.GetAxis ("Vertical");
+        Vector2 movement;
 
-        //Use the two store floats to create a new Vector2 variable movement.
-        Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
+        direction = jsMovement.InputDirection; 
+
+        if (direction != Vector3.zero) 
+        {
+            movement = new Vector2 (direction.x, direction.y);
+        } else {
+            //Store the current horizontal input in the float moveHorizontal.
+            float moveHorizontal = Input.GetAxis ("Horizontal");
+
+            //Store the current vertical input in the float moveVertical.
+            float moveVertical = Input.GetAxis ("Vertical");
+
+            //Use the two store floats to create a new Vector2 variable movement.
+            movement = new Vector2 (moveHorizontal, moveVertical);
+        }
+
+        
 
         //Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
         rb2d.AddForce (movement * speed);
