@@ -8,11 +8,28 @@ public class PlayerController : MonoBehaviour {
 	public float speed;             //Floating point variable to store the player's movement speed.
     public float bulletSpeed = 2f; 
     private Rigidbody2D rb2d;       //Store a reference to the Rigidbody2D component required to use 2D Physics.
-    public Rigidbody2D bullet;                // 子弹 Prefab
+    public Rigidbody2D Bullet;                // 子弹 Prefab
 
 
     public VJHandler jsMovement;
     private Vector3 direction;
+
+    void OnEnable(){
+		EasyButton.On_ButtonUp += On_ButtonUp;
+	}
+	void On_ButtonUp(string buttonName){
+
+		if(buttonName.Equals("put_down")){
+		float moveHorizontal = Input.GetAxis ("Horizontal");
+
+		//Store the current vertical input in the float moveVertical.
+		float moveVertical = Input.GetAxis ("Vertical");
+			// 初始化子弹
+		Rigidbody2D bulletInstance = Instantiate(Bullet, transform.position, new Quaternion(0, 0, 0, 0)) as Rigidbody2D;
+			// velocity直接给物体一个固定的移动速度
+		bulletInstance.velocity = new Vector2(moveHorizontal * bulletSpeed, moveVertical * bulletSpeed);
+		}
+	}
     // Use this for initialization
     void Start()
     {
@@ -51,18 +68,18 @@ public class PlayerController : MonoBehaviour {
 
     void Update() 
     {
-        float moveHorizontal = Input.GetAxis ("Horizontal");
+        // float moveHorizontal = Input.GetAxis ("Horizontal");
 
-        //Store the current vertical input in the float moveVertical.
-        float moveVertical = Input.GetAxis ("Vertical");
+        // //Store the current vertical input in the float moveVertical.
+        // float moveVertical = Input.GetAxis ("Vertical");
         
-        if(Input.GetButtonDown("Fire1") || (Input.GetKeyDown(KeyCode.Z)) == true)
-        {
-            // 初始化子弹
-            Rigidbody2D bulletInstance = Instantiate(bullet, transform.position, new Quaternion(0, 0, 0, 0)) as Rigidbody2D;
-            // velocity直接给物体一个固定的移动速度
-            bulletInstance.velocity = new Vector2(moveHorizontal * bulletSpeed, moveVertical * bulletSpeed);
-        }
+        // if(Input.GetButtonDown("Fire1") || (Input.GetKeyDown(KeyCode.Z)) == true)
+        // {
+        //     // 初始化子弹
+        //     Rigidbody2D bulletInstance = Instantiate(bullet, transform.position, new Quaternion(0, 0, 0, 0)) as Rigidbody2D;
+        //     // velocity直接给物体一个固定的移动速度
+        //     bulletInstance.velocity = new Vector2(moveHorizontal * bulletSpeed, moveVertical * bulletSpeed);
+        // }
     }
 
     void OnTriggerEnter2D(Collider2D other) 
