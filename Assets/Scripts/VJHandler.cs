@@ -37,8 +37,8 @@ public class VJHandler : MonoBehaviour , IDragHandler, IPointerUpHandler, IPoint
             InputDirection = (InputDirection.magnitude > 1) ? InputDirection.normalized : InputDirection;
             
             //to define the area in which joystick can move around
-            joystick.rectTransform.anchoredPosition = new Vector3 (InputDirection.x * (jsContainer.rectTransform.sizeDelta.x/3)
-                                                                   ,InputDirection.y * (jsContainer.rectTransform.sizeDelta.y)/3);
+            joystick.rectTransform.anchoredPosition = new Vector3 (InputDirection.x * (jsContainer.rectTransform.sizeDelta.x/6)
+                                                                   ,InputDirection.y * (jsContainer.rectTransform.sizeDelta.y)/6);
             
     }
     
