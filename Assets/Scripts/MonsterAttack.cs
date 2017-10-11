@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class MonsterAttack : MonoBehaviour
 {
-	public float timeBetweenAttacks = 20f;
-	public int attackDamage = 2;
+	public float timeBetweenAttacks = .5f;
+	public int attackDamage = 10;
 
 	//Animator anim;
 	GameObject player;

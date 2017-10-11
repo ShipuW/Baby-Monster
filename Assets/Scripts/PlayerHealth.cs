@@ -28,6 +28,7 @@ public class PlayerHealth : MonoBehaviour
 	{
 		if(damaged)
 		{
+			Debug.Log ("Player is attacked!");
 			damageImage.color = flashColour;
 		}
 		else
@@ -51,6 +52,10 @@ public class PlayerHealth : MonoBehaviour
 		}
 	}
 
+	public void TakeSupply (int amount) {
+		currentHealth = Mathf.Max(startingHealth, currentHealth + amount);
+		healthSlider.value = currentHealth;
+	}
 
 	void Death ()
 	{
