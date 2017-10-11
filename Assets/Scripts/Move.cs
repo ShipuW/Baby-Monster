@@ -30,13 +30,5 @@ public class Move : MonoBehaviour {
 		InputDirection = Vector3.zero;
 	}
 
-	// Use this for initialization
-	void Start () {
-		InputDirection = Vector3.zero;
-	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

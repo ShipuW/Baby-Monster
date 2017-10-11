@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-
+	public bool canMove;
 	public float speed;             //Floating point variable to store the player's movement speed.
     public float bulletSpeed = 2f; 
     private Rigidbody2D rb2d;       //Store a reference to the Rigidbody2D component required to use 2D Physics.
@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+		canMove = true;
         //Get and store a reference to the Rigidbody2D component so that we can access it.
         rb2d = GetComponent<Rigidbody2D> ();
     }
@@ -90,7 +91,7 @@ public class PlayerController : MonoBehaviour {
             other.gameObject.SetActive(false);
         } else if (other.gameObject.CompareTag("Monster")) 
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 }
