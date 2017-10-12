@@ -62,6 +62,7 @@
      <Compile Include="Assets\TutorialInfo\Scripts\Editor\TutorialInfoEditor.cs" />
      <None Include="Assets\EasyTouch\Readme_first.txt" />
      <None Include="Assets\TutorialInfo\Fonts\LICENSE.txt" />
+     <None Include="Assets\Fonts\LuckiestGuy\LICENSE.txt" />
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
