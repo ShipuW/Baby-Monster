@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletController : MonoBehaviour {
 
 	public Rigidbody2D supply; 
+	public int damage = 10;
 	
 	void Start () 
     {
@@ -21,8 +22,12 @@ public class BulletController : MonoBehaviour {
             Destroy(coll.gameObject);
             Destroy(gameObject);
         } else if (coll.gameObject.CompareTag("Monster")) {
-            Destroy(coll.gameObject);
+            //Destroy(coll.gameObject);
+			MonsterController monster = coll.gameObject.GetComponent<MonsterController>();
+			monster.takeDamage (damage);
+			Debug.Log ("Enemy got hit!");
             Destroy(gameObject);
+
         }
     }
 }

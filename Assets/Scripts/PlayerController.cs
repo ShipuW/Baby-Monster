@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-	public bool canMove;
 	public float speed;             //Floating point variable to store the player's movement speed.
     public float bulletSpeed = 2f; 
     private Rigidbody2D rb2d;       //Store a reference to the Rigidbody2D component required to use 2D Physics.
@@ -33,7 +32,6 @@ public class PlayerController : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-		canMove = true;
         //Get and store a reference to the Rigidbody2D component so that we can access it.
         rb2d = GetComponent<Rigidbody2D> ();
 		health = GetComponent<PlayerHealth> ();
@@ -89,16 +87,11 @@ public class PlayerController : MonoBehaviour {
         //Check the provided Collider2D parameter other to see if it is tagged "PickUp", if it is...
         if (other.gameObject.CompareTag("Supply"))
         {
-			Supply[] supplies = other.gameObject.GetComponents<Supply>();
-			for (int i = 0; i < supplies.Length; i++) {
-				health.TakeSupply (supplies [i].value);
-				Debug.Log ("Get supply of value " + supplies[i].value);
-			}
+			Supply supply = other.gameObject.GetComponent<Supply>();
+			health.TakeSupply (supply.value);
+			Debug.Log ("Get supply of value " + supply.value);
 			other.gameObject.SetActive(false);
 
-        } else if (other.gameObject.CompareTag("Monster")) 
-        {
-            //Destroy(gameObject);
         }
     }
 }

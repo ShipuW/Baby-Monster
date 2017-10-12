@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class MonsterController : MonoBehaviour {
 
 	public Transform player;
+	public int scoreValue = 10;
+	public int health = 10;
 	float minDist = 10.0f;
 	PlayerHealth playerHealth;
 
@@ -31,6 +33,14 @@ public class MonsterController : MonoBehaviour {
 			transform.position = Vector3.SmoothDamp(transform.position, player.position, ref smoothVelocity, smoothTime);
 		}
 
+	}
+	public void takeDamage(int value) {
+		health -= value;
+		if (health <= 0) {
+			GetComponent<SpriteRenderer> ().color = Color.grey;
+			Destroy (gameObject, .5f);
+			ScoreManager.score += scoreValue;
+		}
 	}
 
 		

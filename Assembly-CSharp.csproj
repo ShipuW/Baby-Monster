@@ -106,6 +106,7 @@
      <Compile Include="Assets\Scripts\Move.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerHealth.cs" />
+     <Compile Include="Assets\Scripts\ScoreManager.cs" />
      <Compile Include="Assets\Scripts\Supply.cs" />
      <Compile Include="Assets\Scripts\VJHandler.cs" />
      <Compile Include="Assets\TutorialInfo\Scripts\TutorialInfo.cs" />

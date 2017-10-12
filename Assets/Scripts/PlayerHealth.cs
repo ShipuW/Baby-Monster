@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
 	public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
 	PlayerController playerController;
+	SpriteRenderer spriteRenderer;
 	bool isDead;
 	bool damaged;
 
@@ -22,6 +23,7 @@ public class PlayerHealth : MonoBehaviour
 		playerController = GetComponent <PlayerController> ();
 		//playerShooting = GetComponentInChildren <PlayerShooting> ();
 		currentHealth = startingHealth;
+		spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 
 	void Update ()
@@ -68,7 +70,8 @@ public class PlayerHealth : MonoBehaviour
 //		playerAudio.clip = deathClip;
 //		playerAudio.Play ();
 
-		playerController.canMove = false;
+		//playerController.enabled = false;
+		spriteRenderer.color = Color.grey;
 		//playerShooting.enabled = false;
 	}
 
