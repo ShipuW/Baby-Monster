@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-
 	public float speed;             //Floating point variable to store the player's movement speed.
     public float bulletSpeed = 2f; 
     private Rigidbody2D rb2d;       //Store a reference to the Rigidbody2D component required to use 2D Physics.
     public Rigidbody2D Bullet;                // 子弹 Prefab
 
-
     public VJHandler jsMovement;
     private Vector3 direction;
+	private PlayerHealth health;
 
     void OnEnable(){
 		EasyButton.On_ButtonUp += On_ButtonUp;
@@ -35,6 +34,7 @@ public class PlayerController : MonoBehaviour {
     {
         //Get and store a reference to the Rigidbody2D component so that we can access it.
         rb2d = GetComponent<Rigidbody2D> ();
+		health = GetComponent<PlayerHealth> ();
     }
 
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
@@ -87,10 +87,11 @@ public class PlayerController : MonoBehaviour {
         //Check the provided Collider2D parameter other to see if it is tagged "PickUp", if it is...
         if (other.gameObject.CompareTag("Supply"))
         {
-            other.gameObject.SetActive(false);
-        } else if (other.gameObject.CompareTag("Monster")) 
-        {
-            Destroy(gameObject);
+			Supply supply = other.gameObject.GetComponent<Supply>();
+			health.TakeSupply (supply.value);
+			Debug.Log ("Get supply of value " + supply.value);
+			other.gameObject.SetActive(false);
+
         }
     }
 }
