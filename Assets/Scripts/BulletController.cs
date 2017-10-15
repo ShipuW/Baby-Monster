@@ -1,16 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-<<<<<<< HEAD
 using System;
-=======
->>>>>>> serverJoy
 
 public class BulletController : MonoBehaviour {
 
 	public Rigidbody2D supply; 
 	public int damage = 10;
-<<<<<<< HEAD
     public GameObject explosion;
     public float radius;
 
@@ -47,12 +43,6 @@ public class BulletController : MonoBehaviour {
             
             
         }, 2.0f));
-=======
-	
-	void Start () 
-    {
-        Destroy(gameObject, 5);
->>>>>>> serverJoy
     }
 
 
