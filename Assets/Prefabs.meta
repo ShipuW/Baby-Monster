@@ -1,7 +1,11 @@
 fileFormatVersion: 2
 guid: e6632fae0f906478895e6eed269733e7
 folderAsset: yes
+<<<<<<< HEAD
 timeCreated: 1507932364
+=======
+timeCreated: 1506357383
+>>>>>>> serverJoy
 licenseType: Free
 DefaultImporter:
   userData: 

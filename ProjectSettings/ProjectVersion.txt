@@ -1,1 +1,9 @@
+<<<<<<< HEAD
 m_EditorVersion: 2017.1.0f3
+=======
+<<<<<<< HEAD
+m_EditorVersion: 2017.1.1f1
+=======
+m_EditorVersion: 2017.1.0f3
+>>>>>>> serverJoy
+>>>>>>> origin/development
