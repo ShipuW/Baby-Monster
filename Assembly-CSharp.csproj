@@ -144,6 +144,7 @@
      <None Include="Assets\Movinarc\PackageUninstaller\README.txt" />
      <None Include="Assets\EasyTouchBundle\EasyTouchControls\ReleaseNotes.txt" />
      <None Include="Assets\EasyTouchBundle\EasyTouchControls\Documentation\Version 2.0.txt" />
+     <None Include="Assets\GitMerge-for-Unity\Editor\Resources\Licenses.txt" />
      <None Include="Assets\EasyTouchBundle\EasyTouch\_Documentation\How to migrate from EasyTouch 4.X.txt" />
      <None Include="Assets\EasyTouchBundle\Readme.txt" />
      <None Include="Assets\Fonts\LuckiestGuy\LICENSE.txt" />
