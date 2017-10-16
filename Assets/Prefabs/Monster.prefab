@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4304546393972132}
   - component: {fileID: 212788965055820858}
-  - component: {fileID: 60095115232616440}
   - component: {fileID: 50507622122652492}
+  - component: {fileID: 60095115232616440}
   - component: {fileID: 58282093672752672}
   - component: {fileID: 114770790764799812}
   - component: {fileID: 114742814863331996}
@@ -64,7 +64,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &58282093672752672
 CircleCollider2D:
   m_ObjectHideFlags: 1

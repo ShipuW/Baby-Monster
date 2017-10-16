@@ -7,7 +7,7 @@ public class MonsterController : MonoBehaviour {
 	public Transform player;
 	public int scoreValue = 10;
 	public int health = 10;
-	float minDist = 10.0f;
+	float minDist = 30.0f;
 	PlayerHealth playerHealth;
 
 	//private BoxCollider2D boxCollider;

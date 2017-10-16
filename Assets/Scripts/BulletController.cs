@@ -51,15 +51,15 @@ public class BulletController : MonoBehaviour {
         //Check the provided Collider2D parameter other to see if it is tagged "PickUp", if it is...
         if (coll.gameObject.CompareTag("BreakableBox"))
         {
-        	Rigidbody2D supplyInstance = Instantiate(supply, coll.transform.position, new Quaternion(0, 0, 0, 0)) as Rigidbody2D;
-            Destroy(coll.gameObject);
-            Destroy(gameObject);
+        	// Rigidbody2D supplyInstance = Instantiate(supply, coll.transform.position, new Quaternion(0, 0, 0, 0)) as Rigidbody2D;
+         //    Destroy(coll.gameObject);
+         //    Destroy(gameObject);
         } else if (coll.gameObject.CompareTag("Monster")) {
             //Destroy(coll.gameObject);
-			MonsterController monster = coll.gameObject.GetComponent<MonsterController>();
-			monster.takeDamage (damage);
-			Debug.Log ("Enemy got hit!");
-            Destroy(gameObject);
+			// MonsterController monster = coll.gameObject.GetComponent<MonsterController>();
+			// monster.takeDamage (damage);
+			// Debug.Log ("Enemy got hit!");
+   //          Destroy(gameObject);
 
         }
     }
