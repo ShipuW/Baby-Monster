@@ -8,3 +8,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Completed/Scenes/Main (Completed).unity
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scene/GamePlay.unity
+    guid: 98c5f25b85ed745cbab5115ffc968ae6
+  - enabled: 1
+    path: Assets/Scene/Menu.unity
+    guid: 4ad1fde35c97d4578864e291859bd80e
