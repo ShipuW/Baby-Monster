@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Baby Monster", "Assembly-CSharp.csproj", "{FA6F6551-1858-C64E-EF87-ABE8668044DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Baby Monster", "Assembly-CSharp-firstpass.csproj", "{349FDF5E-AF30-17CF-0151-59929C801E12}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Baby Monster", "Assembly-CSharp-Editor.csproj", "{D6813106-50DC-E7F3-9A73-23AC65D1E8C5}"
 EndProject
 Global
@@ -15,6 +17,10 @@ Global
 		{FA6F6551-1858-C64E-EF87-ABE8668044DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA6F6551-1858-C64E-EF87-ABE8668044DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA6F6551-1858-C64E-EF87-ABE8668044DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{349FDF5E-AF30-17CF-0151-59929C801E12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{349FDF5E-AF30-17CF-0151-59929C801E12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{349FDF5E-AF30-17CF-0151-59929C801E12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{349FDF5E-AF30-17CF-0151-59929C801E12}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D6813106-50DC-E7F3-9A73-23AC65D1E8C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D6813106-50DC-E7F3-9A73-23AC65D1E8C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6813106-50DC-E7F3-9A73-23AC65D1E8C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
