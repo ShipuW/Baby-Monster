@@ -674,6 +674,20 @@ Light:
   m_Lightmapping: 2
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -869,32 +883,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c26c7a0dcd8138d4194e0a4435a4740c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnregisterAtDisable: 0
   _anchor: 3
   _anchorOffet: {x: 50, y: 50}
   _visible: 1
   _activated: 1
-  enableCamera: 0
-  cameraMode: 0
-  camTargetTag: Player
-  autoLinkTagCam: 1
-  autoCamTag: MainCamera
-  cameraTransform: {fileID: 0}
-  cameraTargetMode: 0
-  enableWallDetection: 0
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  cameraLookAt: {fileID: 0}
-  followOffset: {x: 0, y: 6, z: -6}
-  followDistance: 10
-  followHeight: 5
-  followRotationDamping: 5
-  followHeightDamping: 5
-  pointId: -1
-  enableKeySimulation: 1
-  allowSimulationStandalone: 0
-  visibleOnStandalone: 1
   dPadAxisCount: 0
   useFixedUpdate: 0
   isOnDrag: 0
@@ -908,7 +900,6 @@ MonoBehaviour:
   showTouchEventInspector: 0
   showDownEventInspector: 0
   showPressEventInspector: 0
-  showCameraInspector: 0
   onMoveStart:
     m_PersistentCalls:
       m_Calls: []
@@ -980,25 +971,14 @@ MonoBehaviour:
     m_TypeName: ETCJoystick+OnDownRightHandler, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   joystickType: 1
-  allowJoystickOverTouchPad: 0
   radiusBase: 0
-  radiusBaseValue: 0
   axisX:
     name: HorizontalRight
-    autoLinkTagPlayer: 0
-    autoTag: Player
-    player: {fileID: 0}
     enable: 1
+    range: 0
     invertedAxis: 0
     speed: 100
     deadValue: 0.05
-    valueMethod: 0
-    curveValue:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
     isEnertia: 0
     inertia: 0
     inertiaThreshold: 0.08
@@ -1014,7 +994,6 @@ MonoBehaviour:
     axisValue: 0
     axisSpeedValue: 0
     axisThreshold: 0.5
-    isLockinJump: 0
     axisState: 0
     _directTransform: {fileID: 14133108}
     directAction: 1
@@ -1023,29 +1002,13 @@ MonoBehaviour:
     directCharacterController: {fileID: 14133109}
     directRigidBody: {fileID: 0}
     gravity: 0
-    currentGravity: 0
-    isJump: 0
-    unityAxis: Horizontal
-    showGeneralInspector: 0
-    showDirectInspector: 0
-    showInertiaInspector: 0
-    showSimulatinInspector: 0
   axisY:
     name: VerticalRight
-    autoLinkTagPlayer: 0
-    autoTag: Player
-    player: {fileID: 0}
     enable: 1
+    range: 0
     invertedAxis: 1
     speed: 100
     deadValue: 0.2
-    valueMethod: 0
-    curveValue:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
     isEnertia: 0
     inertia: 0
     inertiaThreshold: 0.08
@@ -1061,7 +1024,6 @@ MonoBehaviour:
     axisValue: 0
     axisSpeedValue: 0
     axisThreshold: 0.5
-    isLockinJump: 0
     axisState: 0
     _directTransform: {fileID: 85320319}
     directAction: 1
@@ -1070,28 +1032,9 @@ MonoBehaviour:
     directCharacterController: {fileID: 0}
     directRigidBody: {fileID: 0}
     gravity: 0
-    currentGravity: 0
-    isJump: 0
-    unityAxis: Vertical
-    showGeneralInspector: 0
-    showDirectInspector: 0
-    showInertiaInspector: 0
-    showSimulatinInspector: 0
   thumb: {fileID: 1741509799}
   joystickArea: 1
   userArea: {fileID: 0}
-  isTurnAndMove: 0
-  tmSpeed: 10
-  tmAdditionnalRotation: 0
-  tmMoveCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  tmLockInJump: 0
-  isNoReturnThumb: 0
-  isNoOffsetThumb: 0
 --- !u!1 &1741509798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,32 +1246,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c26c7a0dcd8138d4194e0a4435a4740c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnregisterAtDisable: 0
   _anchor: 1
   _anchorOffet: {x: 50, y: 50}
   _visible: 1
   _activated: 1
-  enableCamera: 0
-  cameraMode: 0
-  camTargetTag: Player
-  autoLinkTagCam: 1
-  autoCamTag: MainCamera
-  cameraTransform: {fileID: 0}
-  cameraTargetMode: 0
-  enableWallDetection: 0
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  cameraLookAt: {fileID: 0}
-  followOffset: {x: 0, y: 6, z: -6}
-  followDistance: 10
-  followHeight: 5
-  followRotationDamping: 5
-  followHeightDamping: 5
-  pointId: -1
-  enableKeySimulation: 1
-  allowSimulationStandalone: 0
-  visibleOnStandalone: 1
   dPadAxisCount: 0
   useFixedUpdate: 0
   isOnDrag: 0
@@ -1342,7 +1263,6 @@ MonoBehaviour:
   showTouchEventInspector: 0
   showDownEventInspector: 0
   showPressEventInspector: 0
-  showCameraInspector: 0
   onMoveStart:
     m_PersistentCalls:
       m_Calls: []
@@ -1414,25 +1334,14 @@ MonoBehaviour:
     m_TypeName: ETCJoystick+OnDownRightHandler, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   joystickType: 1
-  allowJoystickOverTouchPad: 0
   radiusBase: 0
-  radiusBaseValue: 0
   axisX:
     name: HorizontalLeft
-    autoLinkTagPlayer: 0
-    autoTag: Player
-    player: {fileID: 0}
     enable: 1
+    range: 0
     invertedAxis: 0
     speed: 15
     deadValue: 0.1
-    valueMethod: 0
-    curveValue:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
     isEnertia: 0
     inertia: 0
     inertiaThreshold: 0.08
@@ -1448,7 +1357,6 @@ MonoBehaviour:
     axisValue: 0
     axisSpeedValue: 0
     axisThreshold: 0.5
-    isLockinJump: 0
     axisState: 0
     _directTransform: {fileID: 14133108}
     directAction: 3
@@ -1457,29 +1365,13 @@ MonoBehaviour:
     directCharacterController: {fileID: 14133109}
     directRigidBody: {fileID: 0}
     gravity: 0
-    currentGravity: 0
-    isJump: 0
-    unityAxis: Horizontal
-    showGeneralInspector: 0
-    showDirectInspector: 0
-    showInertiaInspector: 0
-    showSimulatinInspector: 0
   axisY:
     name: VerticalLeft
-    autoLinkTagPlayer: 0
-    autoTag: Player
-    player: {fileID: 0}
     enable: 1
+    range: 0
     invertedAxis: 0
     speed: 15
     deadValue: 0.1
-    valueMethod: 0
-    curveValue:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
     isEnertia: 0
     inertia: 0
     inertiaThreshold: 0.08
@@ -1495,7 +1387,6 @@ MonoBehaviour:
     axisValue: 0
     axisSpeedValue: 0
     axisThreshold: 0.5
-    isLockinJump: 0
     axisState: 0
     _directTransform: {fileID: 14133108}
     directAction: 3
@@ -1504,28 +1395,9 @@ MonoBehaviour:
     directCharacterController: {fileID: 14133109}
     directRigidBody: {fileID: 0}
     gravity: 9.81
-    currentGravity: 0
-    isJump: 0
-    unityAxis: Vertical
-    showGeneralInspector: 0
-    showDirectInspector: 0
-    showInertiaInspector: 0
-    showSimulatinInspector: 0
   thumb: {fileID: 596880157}
   joystickArea: 1
   userArea: {fileID: 0}
-  isTurnAndMove: 0
-  tmSpeed: 10
-  tmAdditionnalRotation: 0
-  tmMoveCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  tmLockInJump: 0
-  isNoReturnThumb: 0
-  isNoOffsetThumb: 0
 --- !u!224 &1822518192
 RectTransform:
   m_ObjectHideFlags: 0

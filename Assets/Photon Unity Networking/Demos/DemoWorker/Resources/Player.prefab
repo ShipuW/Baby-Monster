@@ -2128,9 +2128,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04aa96c3db9b22499df04b7c798e649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceAway: 0
-  distanceUp: 0
-  smooth: 0
+  cameraTransform: {fileID: 0}
+  distance: 3
+  height: 1
+  angularSmoothLag: 0.1
+  angularMaxSpeed: 175
+  heightSmoothLag: 0.3
+  snapSmoothLag: 0.2
+  snapMaxSpeed: 720
+  clampHeadPositionScreenSpace: 0.75
+  lockCameraTimeout: 0.2
 --- !u!1002 &11400001
 EditorExtensionImpl:
   serializedVersion: 6

@@ -30,15 +30,12 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-
     public void On_SkillJoystickUp( ){
 
 		if(circleProcess.currentBombNum == 0)
 			return;
 		//float moveHorizontal = Input.GetAxis ("Horizontal");
 
-		//Store the current vertical input in the float moveVertical.
-		//float moveVertical = Input.GetAxis ("Vertical");
 			// 初始化子弹
 		Rigidbody2D bulletInstance = Instantiate(Bullet, transform.position+move_offset, new Quaternion(0, 0, 0, 0)) as Rigidbody2D;
 		// velocity直接给物体一个固定的移动速度

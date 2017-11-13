@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 669
-    y: 101
-    width: 894
-    height: 694
+    x: 230
+    y: 405
+    width: 1050
+    height: 395
   m_ShowMode: 0
   m_Title: 
   m_RootView: {fileID: 4}
@@ -35,14 +35,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 0
+    x: 50
     y: 45
-    width: 1680
-    height: 931
+    width: 1230
+    height: 755
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 5}
+<<<<<<< HEAD
   m_MinSize: {x: 950, y: 492}
+=======
+  m_MinSize: {x: 950, y: 371}
+>>>>>>> origin/mergePutPieces
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -60,10 +64,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 894
-    height: 694
-  m_MinSize: {x: 100, y: 122}
-  m_MaxSize: {x: 4000, y: 4022}
+    width: 1050
+    height: 395
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -86,12 +90,16 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 894
-    height: 694
+    width: 1050
+    height: 395
   m_MinSize: {x: 100, y: 122}
   m_MaxSize: {x: 4000, y: 4022}
   vertical: 0
+<<<<<<< HEAD
   controlID: 6841
+=======
+  controlID: 135
+>>>>>>> origin/mergePutPieces
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -111,9 +119,9 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1680
-    height: 931
-  m_MinSize: {x: 950, y: 300}
+    width: 1230
+    height: 755
+  m_MinSize: {x: 950, y: 371}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &6
 MonoBehaviour:
@@ -131,7 +139,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1680
+    width: 1230
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -151,8 +159,8 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 911
-    width: 1680
+    y: 735
+    width: 1230
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -176,12 +184,21 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
+<<<<<<< HEAD
     width: 1680
     height: 881
   m_MinSize: {x: 913, y: 442}
   m_MaxSize: {x: 22008, y: 10021}
   vertical: 0
   controlID: 4910
+=======
+    width: 1230
+    height: 705
+  m_MinSize: {x: 1113, y: 321}
+  m_MaxSize: {x: 22006, y: 10021}
+  vertical: 0
+  controlID: 28
+>>>>>>> origin/mergePutPieces
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -200,12 +217,21 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 848
     height: 881
   m_MinSize: {x: 202, y: 442}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
   controlID: 4911
+=======
+    width: 515
+    height: 705
+  m_MinSize: {x: 402, y: 321}
+  m_MaxSize: {x: 4000, y: 6069}
+  vertical: 1
+  controlID: 29
+>>>>>>> origin/mergePutPieces
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -222,17 +248,30 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 848
     height: 356
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 17}
+=======
+    width: 515
+    height: 303
+  m_MinSize: {x: 402, y: 121}
+  m_MaxSize: {x: 2050, y: 2069}
+  m_ActualView: {fileID: 19}
+>>>>>>> origin/mergePutPieces
   m_Panes:
   - {fileID: 17}
   - {fileID: 18}
   - {fileID: 19}
+<<<<<<< HEAD
   m_Selected: 0
   m_LastSelected: 2
+=======
+  m_Selected: 2
+  m_LastSelected: 0
+>>>>>>> origin/mergePutPieces
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,11 +287,19 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 356
     width: 848
     height: 525
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
+=======
+    y: 303
+    width: 515
+    height: 402
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+>>>>>>> origin/mergePutPieces
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -272,10 +319,17 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 848
     y: 0
     width: 204
     height: 881
+=======
+    x: 515
+    y: 0
+    width: 204
+    height: 705
+>>>>>>> origin/mergePutPieces
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 20}
@@ -297,10 +351,17 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 1052
     y: 0
     width: 351
     height: 881
+=======
+    x: 719
+    y: 0
+    width: 234
+    height: 705
+>>>>>>> origin/mergePutPieces
   m_MinSize: {x: 234, y: 271}
   m_MaxSize: {x: 10004, y: 10021}
   m_ActualView: {fileID: 21}
@@ -322,10 +383,10 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1403
+    x: 953
     y: 0
     width: 277
-    height: 881
+    height: 705
   m_MinSize: {x: 277, y: 71}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 22}
@@ -355,10 +416,10 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 669
-    y: 123
-    width: 894
-    height: 672
+    x: 230
+    y: 427
+    width: 1050
+    height: 373
 --- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -381,10 +442,17 @@ MonoBehaviour:
   m_DepthBufferBits: 32
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 0
     y: 450
     width: 846
     height: 504
+=======
+    x: 50
+    y: 397
+    width: 513
+    height: 381
+>>>>>>> origin/mergePutPieces
   m_MaximizeOnPlay: 0
   m_Gizmos: 0
   m_Stats: 0
@@ -393,10 +461,17 @@ MonoBehaviour:
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
+<<<<<<< HEAD
     m_HBaseRangeMin: -423
     m_HBaseRangeMax: 423
     m_VBaseRangeMin: -243.5
     m_VBaseRangeMax: 243.5
+=======
+    m_HBaseRangeMin: -256.5
+    m_HBaseRangeMax: 256.5
+    m_VBaseRangeMin: -182
+    m_VBaseRangeMax: 182
+>>>>>>> origin/mergePutPieces
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -413,16 +488,24 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 17
+<<<<<<< HEAD
       width: 846
       height: 487
     m_Scale: {x: 1, y: 1}
     m_Translation: {x: 423, y: 243.5}
+=======
+      width: 513
+      height: 364
+    m_Scale: {x: 1, y: 1}
+    m_Translation: {x: 256.5, y: 182}
+>>>>>>> origin/mergePutPieces
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
+<<<<<<< HEAD
       x: -423
       y: -243.5
       width: 846
@@ -432,6 +515,17 @@ MonoBehaviour:
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
   m_LastWindowPixelSize: {x: 1692, y: 1008}
+=======
+      x: -256.5
+      y: -182
+      width: 513
+      height: 364
+    m_MinimalGUI: 1
+  m_defaultScale: 1
+  m_TargetTexture: {fileID: 0}
+  m_CurrentColorSpace: 0
+  m_LastWindowPixelSize: {x: 1026, y: 762}
+>>>>>>> origin/mergePutPieces
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000100000100
@@ -457,10 +551,15 @@ MonoBehaviour:
   m_DepthBufferBits: 32
   m_Pos:
     serializedVersion: 2
-    x: 0
+    x: 50
     y: 94
+<<<<<<< HEAD
     width: 846
     height: 335
+=======
+    width: 513
+    height: 282
+>>>>>>> origin/mergePutPieces
   m_SceneLighting: 1
   lastFramingTime: 4172.9943569898605
   m_2DMode: 1
@@ -496,9 +595,15 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
+<<<<<<< HEAD
     m_Target: 2267.7007
     speed: 2
     m_Value: 2267.7007
+=======
+    m_Target: 1745.8792
+    speed: 2
+    m_Value: 1745.8792
+>>>>>>> origin/mergePutPieces
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -573,10 +678,15 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 0
+    x: 50
     y: 94
+<<<<<<< HEAD
     width: 788
     height: 306
+=======
+    width: 513
+    height: 282
+>>>>>>> origin/mergePutPieces
 --- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -599,15 +709,25 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 850
+=======
+    x: 567
+>>>>>>> origin/mergePutPieces
     y: 94
     width: 200
-    height: 860
+    height: 684
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
     m_SelectedIDs: 0a5f0000
     m_LastClickedID: 24330
     m_ExpandedIDs: 36a0f2ff78bef2ffc8e5f2fff6f6faff1afcfffff4ffffff0000000076350000a0350000bc350000da350000145f00002a5f0000
+=======
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: 1afcffff00000000
+>>>>>>> origin/mergePutPieces
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: BreakableBoxes
@@ -652,10 +772,17 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 1054
     y: 94
     width: 347
     height: 860
+=======
+    x: 771
+    y: 94
+    width: 230
+    height: 684
+>>>>>>> origin/mergePutPieces
   m_SearchFilter:
     m_NameFilter: 
     m_ClassNames: []
@@ -674,13 +801,19 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Scene
   m_LastFoldersGridSize: 16
-  m_LastProjectPath: /Users/shipu/Desktop/Baby Monster
+  m_LastProjectPath: /Users/haowu/Documents/unity_project/Baby-Monster-development
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
     m_SelectedIDs: 6a320000
     m_LastClickedID: 12906
     m_ExpandedIDs: 000000005c280000ca280000fa290000dc300000403400006434000094340000ca3400009c3600009e360000a0360000a2360000a4360000a6360000a8360000aa360000ac360000ae360000b036000000ca9a3bffffff7f
+=======
+    m_SelectedIDs: 66280000
+    m_LastClickedID: 10342
+    m_ExpandedIDs: 0000000032280000a0280000ce2d000094300000bc3000002033000024340000ac3400004c3800004e38000050380000523800005438000056380000583800005a3800005c3800005e3800006038000000ca9a3bffffff7f
+>>>>>>> origin/mergePutPieces
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -708,7 +841,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 000000005c280000ca280000fa290000dc300000403400006434000094340000ca3400009c3600009e360000a0360000a2360000a4360000a6360000a8360000aa360000ac360000ae360000b036000000ca9a3bffffff7f
+=======
+    m_ExpandedIDs: 0000000032280000a0280000ce2d000094300000bc3000002033000024340000ac3400004c3800004e38000050380000523800005438000056380000583800005a3800005c3800005e38000060380000
+>>>>>>> origin/mergePutPieces
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -735,8 +872,13 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
+<<<<<<< HEAD
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: ac27000000000000b2650000e6610000a4370000fe310000583500007a420000
+=======
+    m_HadKeyboardFocusLastEvent: 0
+    m_ExpandedInstanceIDs: ac27000000000000b2650000e6610000a4370000
+>>>>>>> origin/mergePutPieces
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -785,10 +927,10 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 1405
+    x: 1005
     y: 94
     width: 275
-    height: 860
+    height: 684
   m_ScrollPosition: {x: 0, y: 0}
   m_InspectorMode: 0
   m_PreviewResizer:
