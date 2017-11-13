@@ -54,6 +54,10 @@ public class LevelManager : MonoBehaviour {
 						if (newElement.MyTileTag == "Tree") {
 							go.GetComponent<SpriteRenderer> ().sortingOrder = 11;
 						}
+						if (newElement.MyTileTag == "Sand") {
+							go.GetComponent<SpriteRenderer> ().sortingOrder = 10;
+						}
+
 						go.transform.parent = map;
 					}
 				}
@@ -64,13 +68,13 @@ public class LevelManager : MonoBehaviour {
 	private void initMap(string rgb,int x, int y)
 	{
 		switch (rgb) {
-		case "28D55CFF": //grass
+		case "DEF6C5FF": //grass
 			GlobalVariable.map [x, y] = 1;
 			break;
-		case "EBE928FF": //sand
+		case "323F3FFF": //sand
 			GlobalVariable.map [x, y] = 2;
 			break;
-		case "E69D00FF": // tree
+		case "FF9F23FF": // tree
 			GlobalVariable.map [x, y] = 3;
 			break;
 		default:

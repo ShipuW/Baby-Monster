@@ -413,32 +413,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a30ee4cdcaaca44a064b72231de6ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnregisterAtDisable: 0
   _anchor: 2
   _anchorOffet: {x: -17.46, y: 30.35}
   _visible: 1
   _activated: 1
-  enableCamera: 0
-  cameraMode: 0
-  camTargetTag: Player
-  autoLinkTagCam: 1
-  autoCamTag: MainCamera
-  cameraTransform: {fileID: 0}
-  cameraTargetMode: 0
-  enableWallDetection: 0
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  cameraLookAt: {fileID: 0}
-  followOffset: {x: 0, y: 6, z: -6}
-  followDistance: 10
-  followHeight: 5
-  followRotationDamping: 5
-  followHeightDamping: 5
-  pointId: -1
-  enableKeySimulation: 1
-  allowSimulationStandalone: 0
-  visibleOnStandalone: 1
   dPadAxisCount: 0
   useFixedUpdate: 0
   isOnDrag: 0
@@ -452,7 +430,6 @@ MonoBehaviour:
   showTouchEventInspector: 1
   showDownEventInspector: 1
   showPressEventInspector: 1
-  showCameraInspector: 0
   onMoveStart:
     m_PersistentCalls:
       m_Calls:
@@ -461,7 +438,8 @@ MonoBehaviour:
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -477,7 +455,8 @@ MonoBehaviour:
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -493,7 +472,8 @@ MonoBehaviour:
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -509,7 +489,8 @@ MonoBehaviour:
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -525,7 +506,8 @@ MonoBehaviour:
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -541,7 +523,8 @@ MonoBehaviour:
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -557,7 +540,8 @@ MonoBehaviour:
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -573,7 +557,8 @@ MonoBehaviour:
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -589,7 +574,8 @@ MonoBehaviour:
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -605,7 +591,8 @@ MonoBehaviour:
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -621,7 +608,8 @@ MonoBehaviour:
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -637,7 +625,8 @@ MonoBehaviour:
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -653,7 +642,8 @@ MonoBehaviour:
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -669,7 +659,8 @@ MonoBehaviour:
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -679,20 +670,11 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   axisX:
     name: Horizontal
-    autoLinkTagPlayer: 0
-    autoTag: Player
-    player: {fileID: 0}
     enable: 1
+    range: 0
     invertedAxis: 1
     speed: 30
     deadValue: 0.1
-    valueMethod: 0
-    curveValue:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
     isEnertia: 0
     inertia: 241
     inertiaThreshold: 0.08
@@ -708,7 +690,6 @@ MonoBehaviour:
     axisValue: 0
     axisSpeedValue: 0
     axisThreshold: 0.5
-    isLockinJump: 0
     axisState: 0
     _directTransform: {fileID: 1057590196}
     directAction: 1
@@ -717,29 +698,13 @@ MonoBehaviour:
     directCharacterController: {fileID: 0}
     directRigidBody: {fileID: 0}
     gravity: 0
-    currentGravity: 0
-    isJump: 0
-    unityAxis: Horizontal
-    showGeneralInspector: 0
-    showDirectInspector: 0
-    showInertiaInspector: 0
-    showSimulatinInspector: 0
   axisY:
     name: Vertical
-    autoLinkTagPlayer: 0
-    autoTag: Player
-    player: {fileID: 0}
     enable: 1
+    range: 0
     invertedAxis: 0
     speed: 30
     deadValue: 0.1
-    valueMethod: 0
-    curveValue:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
     isEnertia: 0
     inertia: 0
     inertiaThreshold: 0.08
@@ -755,7 +720,6 @@ MonoBehaviour:
     axisValue: 0
     axisSpeedValue: 0
     axisThreshold: 0.5
-    isLockinJump: 0
     axisState: 0
     _directTransform: {fileID: 1057590196}
     directAction: 0
@@ -764,13 +728,6 @@ MonoBehaviour:
     directCharacterController: {fileID: 0}
     directRigidBody: {fileID: 0}
     gravity: 0
-    currentGravity: 0
-    isJump: 0
-    unityAxis: Vertical
-    showGeneralInspector: 0
-    showDirectInspector: 0
-    showInertiaInspector: 0
-    showSimulatinInspector: 0
   isDPI: 0
 --- !u!224 &213216631
 RectTransform:
@@ -4658,6 +4615,20 @@ Light:
   m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0

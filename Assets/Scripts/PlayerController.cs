@@ -18,10 +18,7 @@ public class PlayerController : MonoBehaviour {
 
 	public void On_SkillJoystickUp( ){
 
-		//float moveHorizontal = Input.GetAxis ("Horizontal");
 
-		//Store the current vertical input in the float moveVertical.
-		//float moveVertical = Input.GetAxis ("Vertical");
 			// 初始化子弹
 		Rigidbody2D bulletInstance = Instantiate(Bullet, transform.position+move_offset, new Quaternion(0, 0, 0, 0)) as Rigidbody2D;
 		// velocity直接给物体一个固定的移动速度
@@ -99,29 +96,7 @@ public class PlayerController : MonoBehaviour {
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
 	void FixedUpdate()
 	{
-
-//		Vector2 movement;
-//
-//		//direction = jsMovement.InputDirection; 
-//		//direction = jsMovement.InputDirection;
-//		if (InputDirection != Vector3.zero) 
-//		{
-//			movement = new Vector2 (InputDirection.x, InputDirection.y);
-//		} else {
-//			//Store the current horizontal input in the float moveHorizontal.
-//			float moveHorizontal = Input.GetAxis ("Horizontal");
-//
-//			//Store the current vertical input in the float moveVertical.
-//			float moveVertical = Input.GetAxis ("Vertical");
-//
-//			//Use the two store floats to create a new Vector2 variable movement.
-//			movement = new Vector2 (moveHorizontal, moveVertical);
-//		}
-//
-//
-//
-//		//Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
-//		rb2d.AddForce (movement * speed);
+		
 
 	}
 

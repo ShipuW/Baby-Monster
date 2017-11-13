@@ -163,15 +163,12 @@ MonoBehaviour:
   _activated: 1
   enableCamera: 0
   cameraMode: 0
-  camTargetTag: Player
   autoLinkTagCam: 1
   autoCamTag: MainCamera
   cameraTransform: {fileID: 0}
   cameraTargetMode: 0
   enableWallDetection: 0
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 0
+  wallLayer: {}
   cameraLookAt: {fileID: 0}
   followOffset: {x: 0, y: 6, z: -6}
   followDistance: 10
@@ -269,7 +266,6 @@ MonoBehaviour:
   joystickType: 1
   allowJoystickOverTouchPad: 0
   radiusBase: 0
-  radiusBaseValue: 0
   axisX:
     name: Horizontal
     autoLinkTagPlayer: 1
@@ -281,23 +277,19 @@ MonoBehaviour:
     deadValue: 0.1
     valueMethod: 0
     curveValue:
-      serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
-        time: 0
+      - time: 0
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-      - serializedVersion: 2
-        time: 1
+      - time: 1
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
       m_PreInfinity: 0
       m_PostInfinity: 0
-      m_RotationOrder: 4
     isEnertia: 0
     inertia: 0
     inertiaThreshold: 0.08
@@ -340,23 +332,19 @@ MonoBehaviour:
     deadValue: 0.1
     valueMethod: 0
     curveValue:
-      serializedVersion: 2
       m_Curve:
-      - serializedVersion: 2
-        time: 0
+      - time: 0
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
-      - serializedVersion: 2
-        time: 1
+      - time: 1
         value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
       m_PreInfinity: 0
       m_PostInfinity: 0
-      m_RotationOrder: 4
     isEnertia: 0
     inertia: 0
     inertiaThreshold: 0.08
@@ -395,23 +383,19 @@ MonoBehaviour:
   tmSpeed: 10
   tmAdditionnalRotation: 0
   tmMoveCurve:
-    serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
-      time: 0
+    - time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - serializedVersion: 2
-      time: 1
+    - time: 1
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     m_PreInfinity: 0
     m_PostInfinity: 0
-    m_RotationOrder: 4
   tmLockInJump: 0
   isNoReturnThumb: 0
   isNoOffsetThumb: 0

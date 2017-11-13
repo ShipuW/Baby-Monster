@@ -293,6 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathPart: {fileID: 1001867212345038, guid: 93b9ae82eb6ba4a2b808d57dcb710d42, type: 2}
+  pathHolder: {fileID: 1869959819526928, guid: 6b8acce3c251e430fa87b3f864a2b119, type: 2}
 --- !u!1 &195280415
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,19 +638,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapData:
-  - {fileID: 2800000, guid: e722e3745812d403aa30ed5b43b5c853, type: 3}
-  - {fileID: 2800000, guid: e3ef1501bb4a348b48855371c40446e4, type: 3}
+  - {fileID: 2800000, guid: f3ee4bd4c47bd481cb00ed50b4eb3a80, type: 3}
+  - {fileID: 2800000, guid: 129a2db43c37f49baa6b487234791a98, type: 3}
   mapElements:
   - tileTage: Grass2
-    color: {r: 0.15686275, g: 0.8352942, b: 0.36078432, a: 1}
+    color: {r: 0.87058824, g: 0.9647059, b: 0.77254903, a: 1}
     elementPrefab: {fileID: 1727604020175742, guid: 6737b490842854853ae6e1e3afea9916,
       type: 2}
   - tileTage: Sand
-    color: {r: 0.92156863, g: 0.9137255, b: 0.15686275, a: 1}
+    color: {r: 0.19607843, g: 0.24705882, b: 0.24705882, a: 1}
     elementPrefab: {fileID: 1338425609940162, guid: 3d62f88d2394c48b8bc5969ea698cc64,
       type: 2}
   - tileTage: Tree
-    color: {r: 0.9019608, g: 0.6156863, b: 0, a: 1}
+    color: {r: 1, g: 0.62352943, b: 0.13725491, a: 1}
     elementPrefab: {fileID: 1442741830124386, guid: 9baab95a7bf244e2095bdd5c11179ca8,
       type: 2}
   defaultTile: {fileID: 21300000, guid: 206bc368386d7437fb630883746dd520, type: 3}
