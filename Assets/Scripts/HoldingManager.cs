@@ -17,8 +17,8 @@ public class HoldingManager : MonoBehaviour {
 		
 	}
 
-	public pickupPiece (PickupType type) {
-		isHolding
-	}
+	// public pickupPiece (PickupType type) {
+	// 	isHolding = true;
+	// }
 
 }
