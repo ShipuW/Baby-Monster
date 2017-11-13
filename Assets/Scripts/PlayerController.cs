@@ -5,19 +5,36 @@ using System;
 public class PlayerController : MonoBehaviour {
 
 	public float speed;             //Floating point variable to store the player's movement speed.
-
     public float bulletSpeed = 10f; 
-    private Rigidbody2D rb2d;       //Store a reference to the Rigidbody2D component required to use 2D Physics.
     public Rigidbody2D Bullet;                // 子弹 Prefab
 	public float movespeed = 1f;
-
 	public Vector3 InputDirection;
-	private PlayerHealth health;
 	public Vector2 bulletPosition;
 	public Vector3 move_offset;
+	public GameObject process;
 
-	public void On_SkillJoystickUp( ){
+	private Rigidbody2D rb2d;       //Store a reference to the Rigidbody2D component required to use 2D Physics.
+	private PlayerHealth health;
+	private BombCircleProcess circleProcess;
+	private int maxBombNum;
+	private int currentBombNum;
 
+	
+    // Use this for initialization
+    void Start()
+    {
+        //Get and store a reference to the Rigidbody2D component so that we can access it.
+        rb2d = GetComponent<Rigidbody2D> ();
+		health = GetComponent<PlayerHealth> ();
+		circleProcess = process.GetComponent<BombCircleProcess> ();
+
+    }
+
+
+    public void On_SkillJoystickUp( ){
+
+		if(circleProcess.currentBombNum == 0)
+			return;
 		//float moveHorizontal = Input.GetAxis ("Horizontal");
 
 		//Store the current vertical input in the float moveVertical.
@@ -29,10 +46,12 @@ public class PlayerController : MonoBehaviour {
 		Vector2 LocalForward =bulletPosition;
 		Vector2 VecSpeed = LocalForward - LocalPos;
 		bulletInstance.velocity = new Vector2(VecSpeed.x,VecSpeed.y);
+		circleProcess.currentBombNum = circleProcess.currentBombNum - 1;
 
 	}
 
 	public void On_SkillJoystickMove(Vector2 move){
+		
 		float x = 0;
 		float y = 0;
 		float off_set = 1;
@@ -48,16 +67,9 @@ public class PlayerController : MonoBehaviour {
 		}
 		move_offset = new Vector3 (x, y,0);
 		bulletPosition = new Vector2 (transform.position.x + move.x*10, transform.position.y + move.y*10);
+		
 	}
 
-    // Use this for initialization
-    void Start()
-    {
-        //Get and store a reference to the Rigidbody2D component so that we can access it.
-        rb2d = GetComponent<Rigidbody2D> ();
-		health = GetComponent<PlayerHealth> ();
-
-    }
 
 	public void On_Direction_JoystickMove(Vector2 move){
 
@@ -95,40 +107,6 @@ public class PlayerController : MonoBehaviour {
 		rb2d.velocity = Vector2.zero;
 		rb2d.angularVelocity = 0;
 	}
-
-    //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
-	void FixedUpdate()
-	{
-
-//		Vector2 movement;
-//
-//		//direction = jsMovement.InputDirection; 
-//		//direction = jsMovement.InputDirection;
-//		if (InputDirection != Vector3.zero) 
-//		{
-//			movement = new Vector2 (InputDirection.x, InputDirection.y);
-//		} else {
-//			//Store the current horizontal input in the float moveHorizontal.
-//			float moveHorizontal = Input.GetAxis ("Horizontal");
-//
-//			//Store the current vertical input in the float moveVertical.
-//			float moveVertical = Input.GetAxis ("Vertical");
-//
-//			//Use the two store floats to create a new Vector2 variable movement.
-//			movement = new Vector2 (moveHorizontal, moveVertical);
-//		}
-//
-//
-//
-//		//Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
-//		rb2d.AddForce (movement * speed);
-
-	}
-
-    void Update() 
-    {
-        
-    }
 
     void OnTriggerEnter2D(Collider2D other) 
     {

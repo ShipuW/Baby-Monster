@@ -5,6 +5,8 @@ using System;
 
 public class LevelManager : MonoBehaviour {
 
+	
+	
 	[SerializeField]
 	private Texture2D[] mapData;
 	[SerializeField]
@@ -15,6 +17,8 @@ public class LevelManager : MonoBehaviour {
 
 	[SerializeField]
 	private Transform map;
+
+
 
 	private Vector3 WorldStartPos
 	{
@@ -51,7 +55,7 @@ public class LevelManager : MonoBehaviour {
 						GameObject go = Instantiate (newElement.MyElementPrefab);
 						go.transform.position = new Vector2(x_position,y_position); 
 						go.name = x.ToString() + y.ToString();
-						if (newElement.MyTileTag == "Tree") {
+						if (newElement.MyTileTag == "Tree" || newElement.MyTileTag == "Box") {
 							go.GetComponent<SpriteRenderer> ().sortingOrder = 11;
 						}
 						go.transform.parent = map;

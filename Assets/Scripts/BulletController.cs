@@ -40,8 +40,9 @@ public class BulletController : MonoBehaviour {
                     Destroy(collider.gameObject);  
                 }  
             } 
+            Destroy(explodeEffect,0.5f); 
             
-            
+
         }, 2.0f));
     }
 

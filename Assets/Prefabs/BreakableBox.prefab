@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4870345246850702}
   - component: {fileID: 212841083877180246}
   - component: {fileID: 60635055475468260}
+  - component: {fileID: 114019950539705208}
   m_Layer: 0
   m_Name: BreakableBox
   m_TagString: BreakableBox
@@ -86,6 +87,18 @@ PolygonCollider2D:
       - {x: 0.16, y: -0.64}
       - {x: 0.24, y: -0.63}
       - {x: 0.39999998, y: -0.5}
+--- !u!114 &114019950539705208
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698240541973346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6086baab67a7444d890b2156ca64f2fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roadPiece: {fileID: 50135198597195944, guid: 2f6ab4b6cb48b410786e6934286dc11c, type: 2}
 --- !u!212 &212841083877180246
 SpriteRenderer:
   m_ObjectHideFlags: 1
