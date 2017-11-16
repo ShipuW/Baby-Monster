@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour {
 	private BombCircleProcess circleProcess;
 	private int maxBombNum;
 	private int currentBombNum;
+	private Animator anim;
 
 	
     // Use this for initialization
@@ -27,7 +28,7 @@ public class PlayerController : MonoBehaviour {
         rb2d = GetComponent<Rigidbody2D> ();
 		health = GetComponent<PlayerHealth> ();
 		circleProcess = process.GetComponent<BombCircleProcess> ();
-
+		anim = GetComponent<Animator> ();
     }
 
     public void On_SkillJoystickUp( ){
@@ -94,7 +95,8 @@ public class PlayerController : MonoBehaviour {
 			}
 			//transform.Translate (direction * movespeed * Time.deltaTime);
 			rb2d.velocity = direction.normalized * movespeed;
-
+			anim.SetFloat ("MoveX", PositionX);
+			anim.SetFloat ("MoveY", PositionY);
 				
 		}
 
