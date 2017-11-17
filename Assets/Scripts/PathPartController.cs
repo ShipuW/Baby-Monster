@@ -12,16 +12,16 @@ public class PathPartController : MonoBehaviour {
 
 	private bool isTouchDown = false; //是否点击选中零件了按钮
 	private bool isNew = true;	//要生成一个新零件吗
-	private bool currentPositionIsAvaliable = false;
 	private Vector3 lastMousePosition = Vector3.zero;  
-	private List<GameObject> path_list = new List<GameObject>();
 
-	private GameObject holder; //占位符
+	private bool[] positionCheck;
+	private ArrayList mapOccupiedList = new ArrayList ();
+
+	private GameObject holder;
+	private GameObject holder_parent;//组成集合
 
 	private Vector3 WorldStartPos = Vector3.zero;
 
-	private int x = 0;
-	private int y = 0;
 	public void ButtonPutDown(){
 		isTouchDown = true;
 
@@ -35,80 +35,156 @@ public class PathPartController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () { 
-//		if ((Input.GetTouch (0).phase == TouchPhase.Ended) || (Input.GetMouseButtonDown (0))) {
-//			
-//			}
-		if(Input.GetMouseButtonUp(0) && isTouchDown){
-			if (currentPositionIsAvaliable) {
+		if (Input.GetTouch (0).phase == TouchPhase.Ended && isTouchDown) {
+			if (currentPositionsAreAvaliable ()) {
 				/*
-					 *如果当前位置有效 则生成路径 
-					 */
-				GameObject path = Instantiate (pathPart);
-				path.GetComponent<SpriteRenderer> ().sortingOrder = 20;
-				path.transform.position = holder.transform.position;
-				path_list.Add (path);
-				isNew = true;
-				isTouchDown = false;
-				Destroy (holder);
-				GlobalVariable.map [x, y] = 99;
-			} else {
-				/*
-				 *当前位置无效 
-				 */
-				isNew = true;
-				isTouchDown = false;
-				Destroy (holder);
-			}
-			}
-			if (isTouchDown) {
-				//Vector3 offset = Camera.main.ScreenToWorldPoint (Input.mousePosition) - lastMousePosition;  
-				if (isNew) {
-					//Vector2 position = Input.GetTouch (0).position;
-					Vector2 position = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-					//增加偏移量 否则零件显示位置会不精确
-					position.x -= 2;
-					position.y -= 2;
-					holder = Instantiate (pathHolder); //create holder
-					holder.transform.position = position;
-					holder.GetComponent<SpriteRenderer> ().sortingOrder = 20;
-					Color color = holder.GetComponent<SpriteRenderer> ().color;
-					color.a = 0.7f;
-					holder.GetComponent<SpriteRenderer> ().color = color;
-					isNew = false;
-				} else {					
-					//path_list [path_list.Count - 1].transform.position += offset;
-					/*
-					 * 1. 获取零件信息
-					 * 2. 获取当前位置的地图素材
-					 * 3. 通过判断是否可以建造进行上色 绿色：可行 红色：不可行
-					 */ 
-					string o_name = getObjectName (Input.mousePosition.x, Input.mousePosition.y);
-					GameObject root = GameObject.Find (o_name);
-					holder.transform.position = root.transform.position;
-					if (positionIsAvaliable (Input.mousePosition.x, Input.mousePosition.y)) {
-						//change alpha
-						Color color = holder.GetComponent<SpriteRenderer> ().color;
-						color.r = 0f;
-						color.g = 255f;
-						color.b = 0f;
-						holder.GetComponent<SpriteRenderer> ().color = color;
-						currentPositionIsAvaliable = true;
-					} else {
-						//change alpha
-						Color color = holder.GetComponent<SpriteRenderer> ().color;
-						color.r = 255f;
-						color.g = 0f;
-						color.b = 0f;
-						holder.GetComponent<SpriteRenderer> ().color = color;
-						currentPositionIsAvaliable = false;
-					}
+			 	*如果当前位置有效 则生成路径 
+			 	*/	
+				foreach (Transform child in holder_parent.transform) {
+					GameObject path = Instantiate (pathPart);
+					path.transform.position = child.transform.position;
+					path.GetComponent<SpriteRenderer> ().sortingOrder = 19;
+				}
+				foreach (string[] o in mapOccupiedList) {
+					GlobalVariable.map [Int32.Parse (o [0]), Int32.Parse (o [1])] = 99;
 				}
 
+				isNew = true;
+				isTouchDown = false;
+				Destroy (holder_parent);
+			} else {
+				isNew = true;
+				isTouchDown = false;
+				Destroy (holder_parent);
 			}
-			lastMousePosition = Camera.main.ScreenToWorldPoint (Input.mousePosition); 
+		}
+		if (isTouchDown) {
+			//Vector3 offset = Camera.main.ScreenToWorldPoint (Input.mousePosition) - lastMousePosition;  
+			if (isNew) {
+				holder_parent = generateHolderCollections(0);
+				isNew = false;
+			} else {					
+				/*
+				 * 1. 获取零件信息
+				 * 2. 获取当前位置的地图素材
+				 * 3. 通过判断是否可以建造进行上色 绿色：可行 红色：不可行
+				 */  
+				processTheHolder(new Vector2(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y));
+			}
+
+		}
+		lastMousePosition = Camera.main.ScreenToWorldPoint (Input.mousePosition); 
 	}
 
-	private string getObjectName(float x,float y)
+	private void processTheHolder(Vector2 input)
+	{
+		mapOccupiedList.Clear ();
+		string[] o_name = getObjectName (input.x,input.y);
+		GameObject go = GameObject.Find (o_name[0]+o_name[1]);
+		int[] x = getX(GlobalVariable.part_model_T);
+		int[] y = getY (GlobalVariable.part_model_T);
+		int count = 0;
+		foreach(Transform child in holder_parent.transform)
+		{
+			string[] name = new string[1];
+			if (count == 0) {
+				child.transform.position = go.transform.position;
+				name = o_name;
+			}
+			else {
+				name = generateName (o_name [0], o_name [1], y [count] - y [0], x [count] - x [0]);
+				child.transform.position = GameObject.Find (name[0]+name[1]).transform.position;
+			}
+
+			mapOccupiedList.Add (name);
+
+			if (positionIsAvaliable(name[0],name[1])) {
+				Color color = child.GetComponent<SpriteRenderer> ().color;
+				color.r = 0f;
+				color.g = 255f;
+				color.b = 0f;
+				child.GetComponent<SpriteRenderer> ().color = color;
+				positionCheck [count] = true;
+			} else {
+				Color color = child.GetComponent<SpriteRenderer> ().color;
+				color.r = 255f;
+				color.g = 0f;
+				color.b = 0f;
+				child.GetComponent<SpriteRenderer> ().color = color;
+				positionCheck [count] = false;
+			}
+
+			count++;
+		}
+	}
+
+	private bool currentPositionsAreAvaliable(){
+		for (int i = 0; i < positionCheck.Length; i++) {
+			if (!positionCheck [i])
+				return false;
+		}
+		return true;
+	}
+
+	private string[] generateName(string origin_x,string origin_y, int x, int y)
+	{
+		return new string[]{(Int32.Parse (origin_x) + x).ToString() , (Int32.Parse (origin_y) - y).ToString()};
+	}
+
+	private GameObject generateHolderCollections(int type)
+	{
+
+
+ 		GameObject parent = new GameObject ();
+		int holder_number = 4;
+		int[] x = getX(GlobalVariable.part_model_T);
+		int[] y = getY (GlobalVariable.part_model_T);
+		positionCheck = new bool[x.Length];
+		float width = pathHolder.GetComponent<SpriteRenderer> ().bounds.size.x;
+		float height = pathHolder.GetComponent<SpriteRenderer> ().bounds.size.y;
+		Vector2 position = Camera.main.ScreenToWorldPoint (Input.GetTouch(0).position);
+		for (int i = 0; i < holder_number; i++) {
+			GameObject holder = Instantiate (pathHolder);
+			holder.GetComponent<SpriteRenderer> ().sortingOrder = 20;
+			if (i == 0) {
+				holder.transform.position = position;
+			} else {
+				Vector2 new_position = new Vector2 (position.x + (y [i] - y [0]) * width, position.y - (x [i]  -x [0]) *height );
+				holder.transform.position = new_position;
+			}
+			holder.transform.parent = parent.transform;
+		}
+		return parent;
+
+	}
+
+	private int[] getX(int[,] model)
+	{
+		ArrayList array = new ArrayList ();
+		for (int i = 0; i < model.GetLength(0); i++) {
+			for (int j = 0; j < model.GetLength(0); j++) {
+				if (model [i, j] == 1) {
+					array.Add (i);
+				}
+			}
+		}
+		return array.ToArray (typeof(int) )as int[];
+	}
+
+	private int[] getY(int[,] model)
+	{
+		ArrayList array = new ArrayList ();
+		for (int i = 0; i < model.GetLength(0); i++) {
+			for (int j = 0; j < model.GetLength(0); j++) {
+				if (model [i, j] == 1) {
+					array.Add (j);
+				}
+			}
+		}
+		return array.ToArray (typeof(int)) as int[];
+	}
+
+	private string[] getObjectName(float x,float y)
 	{
 		float s_x = (Camera.main.ScreenToWorldPoint(new Vector3(x,y)).x - WorldStartPos.x) / 4;
 		float s_y = (Camera.main.ScreenToWorldPoint(new Vector3(x,y)).y - WorldStartPos.y) / 4;
@@ -116,7 +192,7 @@ public class PathPartController : MonoBehaviour {
 		y = Convert.ToInt32(Math.Floor (s_y));
 		string X = x.ToString();
 		string Y = y.ToString();
-		return X + Y;
+		return new string[]{X,Y};
 	}
 
 	private bool positionIsAvaliable(float f_x, float f_y)
@@ -130,4 +206,16 @@ public class PathPartController : MonoBehaviour {
 		}
 		return false;
 	}
+
+	private bool positionIsAvaliable(string x, string y)
+	{
+		int X = Int32.Parse (x);
+		int Y = Int32.Parse (y);
+		if (GlobalVariable.map [X,Y] != 3 && GlobalVariable.map[X,Y] != 99 && GlobalVariable.map[X,Y] != 2) {
+			return true;
+		}
+		return false;
+	}
+
+
 }

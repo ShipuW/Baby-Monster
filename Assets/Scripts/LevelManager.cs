@@ -71,10 +71,10 @@ public class LevelManager : MonoBehaviour {
 		case "DEF6C5FF": //grass
 			GlobalVariable.map [x, y] = 1;
 			break;
-		case "323F3FFF": //sand
+		case "323F3FFF": //box
 			GlobalVariable.map [x, y] = 2;
 			break;
-		case "FF9F23FF": // tree
+		case "35C419FF": // tree
 			GlobalVariable.map [x, y] = 3;
 			break;
 		default:
