@@ -13,7 +13,7 @@ public class PathPartController : MonoBehaviour {
 	private bool isTouchDown = false; //是否点击选中零件了按钮
 	private bool isNew = true;	//要生成一个新零件吗
 	private Vector3 lastMousePosition = Vector3.zero;  
-
+	private bool isMovementTouched = false;
 	private bool[] positionCheck;
 	private ArrayList mapOccupiedList = new ArrayList ();
 
@@ -22,8 +22,28 @@ public class PathPartController : MonoBehaviour {
 
 	private Vector3 WorldStartPos = Vector3.zero;
 
+	private int touch_indicator = 0;
+
+	public void moveIsHappening()
+	{
+		isMovementTouched = true;	
+	}
+	public void moveNotHappening()
+	{
+		touch_indicator = 0;
+		isMovementTouched = false;
+	}
+
 	public void ButtonPutDown(){
 		isTouchDown = true;
+		if (Input.touchCount == 1) {
+			touch_indicator = 0;
+		} else {
+			if (isMovementTouched)
+				touch_indicator = 1;
+			else
+				touch_indicator = 0;
+		}
 
 	}
 	// Use this for initialization
@@ -34,8 +54,8 @@ public class PathPartController : MonoBehaviour {
 
 
 	// Update is called once per frame
-	void Update () { 
-		if (Input.GetTouch (0).phase == TouchPhase.Ended && isTouchDown) {
+	void FixedUpdate () { 
+		if ((Input.GetTouch(touch_indicator).phase == TouchPhase.Ended  || (Input.touchCount == 0 )) && isTouchDown && !isMovementTouched) {
 			if (currentPositionsAreAvaliable ()) {
 				/*
 			 	*如果当前位置有效 则生成路径 
@@ -69,7 +89,7 @@ public class PathPartController : MonoBehaviour {
 				 * 2. 获取当前位置的地图素材
 				 * 3. 通过判断是否可以建造进行上色 绿色：可行 红色：不可行
 				 */  
-				processTheHolder(new Vector2(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y));
+				processTheHolder(new Vector2(Input.GetTouch(touch_indicator).position.x, Input.GetTouch(touch_indicator).position.y));
 			}
 
 		}
@@ -80,38 +100,34 @@ public class PathPartController : MonoBehaviour {
 	{
 		mapOccupiedList.Clear ();
 		string[] o_name = getObjectName (input.x,input.y);
-		GameObject go = GameObject.Find (o_name[0]+o_name[1]);
+		//GameObject go = GameObject.Find (o_name[0]+','+o_name[1]);
 		int[] x = getX(GlobalVariable.part_model_T);
 		int[] y = getY (GlobalVariable.part_model_T);
 		int count = 0;
 		foreach(Transform child in holder_parent.transform)
 		{
 			string[] name = new string[1];
-			if (count == 0) {
-				child.transform.position = go.transform.position;
-				name = o_name;
-			}
-			else {
-				name = generateName (o_name [0], o_name [1], y [count] - y [0], x [count] - x [0]);
-				child.transform.position = GameObject.Find (name[0]+name[1]).transform.position;
-			}
+			name = generateName (o_name [0], o_name [1], y [count] - y [0], x [count] - x [0]);
+			GameObject temp = GameObject.Find (name [0] + ',' + name [1]);
+			if (temp) {
+				child.transform.position = temp.transform.position;
+				mapOccupiedList.Add (name);
 
-			mapOccupiedList.Add (name);
-
-			if (positionIsAvaliable(name[0],name[1])) {
-				Color color = child.GetComponent<SpriteRenderer> ().color;
-				color.r = 0f;
-				color.g = 255f;
-				color.b = 0f;
-				child.GetComponent<SpriteRenderer> ().color = color;
-				positionCheck [count] = true;
-			} else {
-				Color color = child.GetComponent<SpriteRenderer> ().color;
-				color.r = 255f;
-				color.g = 0f;
-				color.b = 0f;
-				child.GetComponent<SpriteRenderer> ().color = color;
-				positionCheck [count] = false;
+				if (positionIsAvaliable (name [0], name [1])) {
+					Color color = child.GetComponent<SpriteRenderer> ().color;
+					color.r = 0f;
+					color.g = 255f;
+					color.b = 0f;
+					child.GetComponent<SpriteRenderer> ().color = color;
+					positionCheck [count] = true;
+				} else {
+					Color color = child.GetComponent<SpriteRenderer> ().color;
+					color.r = 255f;
+					color.g = 0f;
+					color.b = 0f;
+					child.GetComponent<SpriteRenderer> ().color = color;
+					positionCheck [count] = false;
+				}
 			}
 
 			count++;
@@ -142,7 +158,7 @@ public class PathPartController : MonoBehaviour {
 		positionCheck = new bool[x.Length];
 		float width = pathHolder.GetComponent<SpriteRenderer> ().bounds.size.x;
 		float height = pathHolder.GetComponent<SpriteRenderer> ().bounds.size.y;
-		Vector2 position = Camera.main.ScreenToWorldPoint (Input.GetTouch(0).position);
+		Vector2 position = Camera.main.ScreenToWorldPoint (Input.GetTouch(touch_indicator).position);
 		for (int i = 0; i < holder_number; i++) {
 			GameObject holder = Instantiate (pathHolder);
 			holder.GetComponent<SpriteRenderer> ().sortingOrder = 20;
@@ -201,6 +217,10 @@ public class PathPartController : MonoBehaviour {
 		float s_y = (Camera.main.ScreenToWorldPoint(new Vector3(f_x,f_y)).y - WorldStartPos.y) / 4;
 		int x = Convert.ToInt32(Math.Floor (s_x));
 		int y = Convert.ToInt32(Math.Floor (s_y));
+
+		if (x < 0 || y < 0 || x > 127 || y > 15) 
+			return false;
+
 		if (GlobalVariable.map [x, y] != 3) {
 			return true;
 		}
@@ -211,6 +231,10 @@ public class PathPartController : MonoBehaviour {
 	{
 		int X = Int32.Parse (x);
 		int Y = Int32.Parse (y);
+
+		if (X < 0 || Y < 0 || X > 127 || Y > 15) 
+			return false;
+		
 		if (GlobalVariable.map [X,Y] != 3 && GlobalVariable.map[X,Y] != 99 && GlobalVariable.map[X,Y] != 2) {
 			return true;
 		}

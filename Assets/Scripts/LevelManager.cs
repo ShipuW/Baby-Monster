@@ -50,7 +50,7 @@ public class LevelManager : MonoBehaviour {
 
 						GameObject go = Instantiate (newElement.MyElementPrefab);
 						go.transform.position = new Vector2(x_position,y_position); 
-						go.name = x.ToString() + y.ToString();
+						go.name = x.ToString()+',' + y.ToString();
 						if (newElement.MyTileTag == "Tree") {
 							go.GetComponent<SpriteRenderer> ().sortingOrder = 11;
 						}
