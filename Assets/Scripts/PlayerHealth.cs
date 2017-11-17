@@ -17,6 +17,7 @@ public class PlayerHealth : MonoBehaviour
 	SpriteRenderer spriteRenderer;
 	bool isDead;
 	bool damaged;
+	Animator anim;
 
 	void Awake ()
 	{
@@ -24,6 +25,7 @@ public class PlayerHealth : MonoBehaviour
 		//playerShooting = GetComponentInChildren <PlayerShooting> ();
 		currentHealth = startingHealth;
 		spriteRenderer = GetComponent<SpriteRenderer>();
+		anim = GetComponent<Animator> ();
 	}
 
 	void Update ()
@@ -62,7 +64,7 @@ public class PlayerHealth : MonoBehaviour
 	void Death ()
 	{
 		isDead = true;
-
+		anim.SetTrigger ("isDead");
 		//playerShooting.DisableEffects ();
 
 //		anim.SetTrigger ("Die");
