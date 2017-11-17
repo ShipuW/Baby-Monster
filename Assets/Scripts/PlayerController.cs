@@ -70,7 +70,12 @@ public class PlayerController : MonoBehaviour {
 
 
 	public void On_Direction_JoystickMove(Vector2 move){
-
+		if (health.currentHealth <= 0) {
+			rb2d.velocity = Vector2.zero;
+			rb2d.angularVelocity = 0;
+			anim.SetBool ("PlayerMoving", false);
+			return;
+		}
 		anim.SetBool ("PlayerMoving", true);
 		float PositionX = move.x; //获取摇杆偏摇杆中心的X坐标
 		float PositionY = move.y; //获取摇杆偏离Y坐标
@@ -96,8 +101,8 @@ public class PlayerController : MonoBehaviour {
 			}
 			//transform.Translate (direction * movespeed * Time.deltaTime);
 			rb2d.velocity = direction.normalized * movespeed;
-			anim.SetFloat ("MoveX", PositionX);
-			anim.SetFloat ("MoveY", PositionY);
+			anim.SetFloat ("MoveX", direction.normalized.x);
+			anim.SetFloat ("MoveY", direction.normalized.y);
 				
 		}
 

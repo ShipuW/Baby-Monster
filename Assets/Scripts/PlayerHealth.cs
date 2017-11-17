@@ -63,17 +63,17 @@ public class PlayerHealth : MonoBehaviour
 
 	void Death ()
 	{
+		playerController.enabled = false;
 		isDead = true;
 		anim.SetTrigger ("isDead");
 		//playerShooting.DisableEffects ();
-
-//		anim.SetTrigger ("Die");
 //
 //		playerAudio.clip = deathClip;
 //		playerAudio.Play ();
 
-		//playerController.enabled = false;
+
 		spriteRenderer.color = Color.grey;
+		Debug.Log ("Player is dead!");
 		//playerShooting.enabled = false;
 	}
 

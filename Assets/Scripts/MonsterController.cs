@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 public class MonsterController : MonoBehaviour {
@@ -10,8 +11,15 @@ public class MonsterController : MonoBehaviour {
 	public float chaseRange = 30.0f;
 	public float attackRange = 6.0f;
 	PlayerHealth playerHealth;
+	PathHealth pathHealth;
 	private Animator anim;
 	private float distToPlayer;
+	private float distToPath;
+	private float targetDist;
+	private GameObject nearestPath;
+	public float refreshPathTimer;
+	private float lastRefresh;
+	bool targetPlayer;
 	private Vector3 direction;
 	//private BoxCollider2D boxCollider;
 	//private Rigidbody2D rb2D;
@@ -35,18 +43,32 @@ public class MonsterController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		GetNearestPathBlock ();
 		distToPlayer = Vector2.Distance (transform.position, player.position);
-		direction = Vector3.Normalize(player.position - transform.position);
-		anim.SetFloat ("MoveX", direction.x);
-		anim.SetFloat ("MoveY", direction.y);
-		if (distToPlayer > chaseRange || playerHealth.currentHealth <= 0) {
-			idle ();
-		} 
-		else if (distToPlayer > attackRange) {
-			chase ();
-		}
-		else {
-			startAttack ();
+		distToPath = nearestPath == null? float.MaxValue : Vector2.Distance (transform.position, nearestPath.transform.position);
+		if (distToPlayer < distToPath) {
+			targetPlayer = true;
+			direction = Vector3.Normalize (player.position - transform.position);
+			anim.SetFloat ("MoveX", direction.x);
+			anim.SetFloat ("MoveY", direction.y);
+			if (distToPlayer > chaseRange || playerHealth.currentHealth <= 0) {
+				idle ();
+			} else if (distToPlayer > attackRange) {
+				chase ();
+			} else {
+				startAttack ();
+			}
+		} else {
+			targetPlayer = false;
+			pathHealth = nearestPath.GetComponent<PathHealth> ();
+			direction = Vector3.Normalize (nearestPath.transform.position - transform.position);
+			anim.SetFloat ("MoveX", direction.x);
+			anim.SetFloat ("MoveY", direction.y);
+			if (distToPath > attackRange) {
+				chase ();
+			} else {
+				startAttack ();
+			}
 		}
 	}
 
@@ -77,13 +99,27 @@ public class MonsterController : MonoBehaviour {
 
 	}
 	void attack() {
-		if (playerHealth.currentHealth > 0) {
+		if (targetPlayer && playerHealth.currentHealth > 0) {
 			playerHealth.TakeDamage (attackDamage);
 			//lastAttackTime = Time.time;
-		} else {
+		} 
+		else if (!targetPlayer && pathHealth.currentHealth > 0) {
+			pathHealth.TakeDamage (attackDamage);
+		} 
+		else {
 			idle ();
 		}
 	}
 
+	void GetNearestPathBlock()
+	{
+		if (nearestPath != null && Time.time < lastRefresh + refreshPathTimer) {
+			return;
+		}
+		GameObject[] paths = GameObject.FindGameObjectsWithTag ("PathBlock");
+		if (paths.Length != 0) {
+			nearestPath = paths.Aggregate ((o1, o2) => Vector3.Distance (o1.transform.position, this.transform.position) > Vector3.Distance (o2.transform.position, this.transform.position) ? o2 : o1);
+		}
+	}
 		
 }
