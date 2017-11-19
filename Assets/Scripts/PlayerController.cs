@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour {
 	private BombCircleProcess circleProcess;
 	private int maxBombNum;
 	private int currentBombNum;
+	private Animator anim;
 
 	
     // Use this for initialization
@@ -27,7 +28,7 @@ public class PlayerController : MonoBehaviour {
         rb2d = GetComponent<Rigidbody2D> ();
 		health = GetComponent<PlayerHealth> ();
 		circleProcess = process.GetComponent<BombCircleProcess> ();
-
+		anim = GetComponent<Animator> ();
     }
 
     public void On_SkillJoystickUp( ){
@@ -69,7 +70,13 @@ public class PlayerController : MonoBehaviour {
 
 
 	public void On_Direction_JoystickMove(Vector2 move){
-
+		if (health.currentHealth <= 0) {
+			rb2d.velocity = Vector2.zero;
+			rb2d.angularVelocity = 0;
+			anim.SetBool ("PlayerMoving", false);
+			return;
+		}
+		anim.SetBool ("PlayerMoving", true);
 		float PositionX = move.x; //获取摇杆偏摇杆中心的X坐标
 		float PositionY = move.y; //获取摇杆偏离Y坐标
 		Vector2 direction = Vector2.zero;
@@ -94,7 +101,8 @@ public class PlayerController : MonoBehaviour {
 			}
 			//transform.Translate (direction * movespeed * Time.deltaTime);
 			rb2d.velocity = direction.normalized * movespeed;
-
+			anim.SetFloat ("MoveX", direction.normalized.x);
+			anim.SetFloat ("MoveY", direction.normalized.y);
 				
 		}
 
@@ -103,6 +111,7 @@ public class PlayerController : MonoBehaviour {
 	public void On_Direction_JoystickMoveEnd(){
 		rb2d.velocity = Vector2.zero;
 		rb2d.angularVelocity = 0;
+		anim.SetBool ("PlayerMoving", false);
 	}
 
     void OnTriggerEnter2D(Collider2D other) 

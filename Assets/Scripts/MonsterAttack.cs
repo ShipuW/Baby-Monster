@@ -7,7 +7,7 @@ public class MonsterAttack : MonoBehaviour
 	float timeBetweenAttacks = 1.5f;
 	int attackDamage = 10;
 
-	//Animator anim;
+	private Animator anim;
 	GameObject player;
 	PlayerHealth playerHealth;
 	//EnemyHealth enemyHealth;
@@ -20,7 +20,7 @@ public class MonsterAttack : MonoBehaviour
 		player = GameObject.FindGameObjectWithTag ("Player");
 		playerHealth = player.GetComponent <PlayerHealth> ();
 		//enemyHealth = GetComponent<EnemyHealth>();
-		//anim = GetComponent <Animator> ();
+		anim = GetComponent <Animator> ();
 	}
 
 
@@ -55,6 +55,7 @@ public class MonsterAttack : MonoBehaviour
 		if(playerHealth.currentHealth <= 0)
 		{
 			Debug.Log("player is killed!");
+			anim.SetInteger ("StateNum", 0);
 			//anim.SetTrigger ("PlayerDead");
 		}
 	}
@@ -63,7 +64,7 @@ public class MonsterAttack : MonoBehaviour
 	void Attack ()
 	{
 		timer = 0f;
-
+		anim.SetInteger ("StateNum", 2);
 		if(playerHealth.currentHealth > 0)
 		{
 			playerHealth.TakeDamage (attackDamage);

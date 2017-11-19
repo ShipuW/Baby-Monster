@@ -11,12 +11,13 @@ public class PlayerHealth : MonoBehaviour
 	public Slider healthSlider;
 	public Image damageImage;
 	public float flashSpeed = 5f;
-	public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
+	public Color flashColor = new Color(1f, 0f, 0f, 0.1f);
 
 	PlayerController playerController;
 	SpriteRenderer spriteRenderer;
 	bool isDead;
 	bool damaged;
+	Animator anim;
 
 	void Awake ()
 	{
@@ -24,6 +25,7 @@ public class PlayerHealth : MonoBehaviour
 		//playerShooting = GetComponentInChildren <PlayerShooting> ();
 		currentHealth = startingHealth;
 		spriteRenderer = GetComponent<SpriteRenderer>();
+		anim = GetComponent<Animator> ();
 	}
 
 	void Update ()
@@ -31,7 +33,7 @@ public class PlayerHealth : MonoBehaviour
 		if(damaged)
 		{
 			Debug.Log ("Player is attacked!");
-			damageImage.color = flashColour;
+			damageImage.color = flashColor;
 		}
 		else
 		{
@@ -61,17 +63,17 @@ public class PlayerHealth : MonoBehaviour
 
 	void Death ()
 	{
+		playerController.enabled = false;
 		isDead = true;
-
+		anim.SetTrigger ("isDead");
 		//playerShooting.DisableEffects ();
-
-//		anim.SetTrigger ("Die");
 //
 //		playerAudio.clip = deathClip;
 //		playerAudio.Play ();
 
-		//playerController.enabled = false;
+
 		spriteRenderer.color = Color.grey;
+		Debug.Log ("Player is dead!");
 		//playerShooting.enabled = false;
 	}
 

@@ -9,6 +9,7 @@ TagManager:
   - Monster
   - BreakableBox
   - soldier
+  - PathBlock
   layers:
   - Default
   - TransparentFX
