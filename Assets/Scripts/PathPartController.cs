@@ -87,6 +87,7 @@ public class PathPartController : MonoBehaviour {
 					holder.transform.position = root.transform.position;
 					if (positionIsAvaliable (Input.mousePosition.x, Input.mousePosition.y)) {
 						//change alpha
+						Debug.Log ("Avaliable position!");
 						Color color = holder.GetComponent<SpriteRenderer> ().color;
 						color.r = 0f;
 						color.g = 255f;
@@ -95,6 +96,7 @@ public class PathPartController : MonoBehaviour {
 						currentPositionIsAvaliable = true;
 					} else {
 						//change alpha
+					    Debug.Log ("Not Avaliable position!");
 						Color color = holder.GetComponent<SpriteRenderer> ().color;
 						color.r = 255f;
 						color.g = 0f;
