@@ -38,7 +38,7 @@ public class PathPartController : MonoBehaviour {
 //		if ((Input.GetTouch (0).phase == TouchPhase.Ended) || (Input.GetMouseButtonDown (0))) {
 //			
 //			}
-		if(Input.GetMouseButtonUp(0) && isTouchDown){
+		if(Input.GetTouch(0).phase == TouchPhase.Ended && isTouchDown){
 			if (currentPositionIsAvaliable) {
 				/*
 					 *如果当前位置有效 则生成路径 
@@ -82,10 +82,10 @@ public class PathPartController : MonoBehaviour {
 					 * 2. 获取当前位置的地图素材
 					 * 3. 通过判断是否可以建造进行上色 绿色：可行 红色：不可行
 					 */ 
-					string o_name = getObjectName (Input.mousePosition.x, Input.mousePosition.y);
+					string o_name = getObjectName (Input.GetTouch(0).position.x, Input.GetTouch(0).position.y);
 					GameObject root = GameObject.Find (o_name);
 					holder.transform.position = root.transform.position;
-					if (positionIsAvaliable (Input.mousePosition.x, Input.mousePosition.y)) {
+					if (positionIsAvaliable (Input.GetTouch(0).position.x, Input.GetTouch(0).position.y)) {
 						//change alpha
 						Color color = holder.GetComponent<SpriteRenderer> ().color;
 						color.r = 0f;
