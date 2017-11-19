@@ -54,8 +54,8 @@ public class LevelManager : MonoBehaviour {
 
 						GameObject go = Instantiate (newElement.MyElementPrefab);
 						go.transform.position = new Vector2(x_position,y_position); 
-						go.name = x.ToString() + y.ToString();
-						if (newElement.MyTileTag == "Tree" || newElement.MyTileTag == "Box") {
+						go.name = x.ToString()+',' + y.ToString();
+						if (newElement.MyTileTag == "Tree") {
 							go.GetComponent<SpriteRenderer> ().sortingOrder = 11;
 						}
 						if (newElement.MyTileTag == "Sand") {
@@ -75,10 +75,10 @@ public class LevelManager : MonoBehaviour {
 		case "DEF6C5FF": //grass
 			GlobalVariable.map [x, y] = 1;
 			break;
-		case "323F3FFF": //sand
+		case "323F3FFF": //box
 			GlobalVariable.map [x, y] = 2;
 			break;
-		case "FF9F23FF": // tree
+		case "35C419FF": // tree
 			GlobalVariable.map [x, y] = 3;
 			break;
 		default:

@@ -52,8 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapData:
-  - {fileID: 2800000, guid: e722e3745812d403aa30ed5b43b5c853, type: 3}
-  - {fileID: 2800000, guid: e3ef1501bb4a348b48855371c40446e4, type: 3}
+  - {fileID: 2800000, guid: c433bcb9699dd4a91986f77239b0958d, type: 3}
+  - {fileID: 2800000, guid: f26c14d748045457da191b5b6f301c69, type: 3}
   mapElements:
   - tileTage: Grass2
     color: {r: 0.15686275, g: 0.8352942, b: 0.36078432, a: 1}
