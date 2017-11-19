@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114550221753911970}
   m_Layer: 0
   m_Name: path
-  m_TagString: Path
+  m_TagString: PathBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,6 +52,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edd42d833a3cd499c8ec2afc2f8428ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingHealth: 300
+  currentHealth: 0
+  flashSpeed: 5
+  flashColour: {r: 1, g: 0, b: 0, a: 0.1}
 --- !u!212 &212805350129991810
 SpriteRenderer:
   m_ObjectHideFlags: 1

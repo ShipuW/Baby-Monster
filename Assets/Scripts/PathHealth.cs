@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PathHealth : MonoBehaviour {
-	public int startingHealth = 100;
+	public int startingHealth = 200;
 	public int currentHealth;
 
 	public float flashSpeed = 5f;
@@ -30,7 +30,7 @@ public class PathHealth : MonoBehaviour {
 		}
 		else
 		{
-			spriteRenderer.color = Color.Lerp (spriteRenderer.color, Color.clear, flashSpeed * Time.deltaTime);
+			spriteRenderer.color = Color.Lerp (spriteRenderer.color, Color.white, flashSpeed * Time.deltaTime);
 		}
 		damaged = false;
 	}
@@ -43,15 +43,15 @@ public class PathHealth : MonoBehaviour {
 
 		if(currentHealth <= 0 && !isDestroyed)
 		{
+			Debug.Log ("One Path will be destroyed!");
 			DestroyPath ();
 		}
 	}
 	void DestroyPath ()
 	{
 		isDestroyed = true;
-
-		Destroy (gameObject, .5f);
-		Debug.Log ("One Path is dead!");
+		Destroy (gameObject);
+		Debug.Log ("One Path is destroyed!");
 		//playerShooting.enabled = false;
 	}
 }
