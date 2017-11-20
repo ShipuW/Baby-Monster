@@ -24,6 +24,8 @@ public class PathPartController : MonoBehaviour {
 
 	private int touch_indicator = 0;
 
+	private int[,] model; //碎片对应模型
+
 	public void moveIsHappening()
 	{
 		isMovementTouched = true;	
@@ -53,56 +55,67 @@ public class PathPartController : MonoBehaviour {
 
 
 
+
 	// Update is called once per frame
 	void FixedUpdate () { 
-		if ((Input.GetTouch(touch_indicator).phase == TouchPhase.Ended  || (Input.touchCount == 0 )) && isTouchDown && !isMovementTouched) {
-			if (currentPositionsAreAvaliable ()) {
-				/*
-			 	*如果当前位置有效 则生成路径 
-			 	*/	
-				foreach (Transform child in holder_parent.transform) {
-					GameObject path = Instantiate (pathPart);
-					path.transform.position = child.transform.position;
-					path.GetComponent<SpriteRenderer> ().sortingOrder = 19;
+		try{
+			if (isButtonRealsed()) {
+				if (currentPositionsAreAvaliable ()) {
+					/*
+				 	*如果当前位置有效 则生成路径 
+				 	*/	
+					foreach (Transform child in holder_parent.transform) {
+						GameObject path = Instantiate (pathPart);
+						path.transform.position = child.transform.position;
+						path.GetComponent<SpriteRenderer> ().sortingOrder = 19;
+					}
+					foreach (string[] o in mapOccupiedList) {
+						GlobalVariable.map [Int32.Parse (o [0]), Int32.Parse (o [1])] = 99;
+					}
+
+					isNew = true;
+					isTouchDown = false;
+					Destroy (holder_parent);
+				} else {
+					isNew = true;
+					isTouchDown = false;
+					Destroy (holder_parent);
 				}
-				foreach (string[] o in mapOccupiedList) {
-					GlobalVariable.map [Int32.Parse (o [0]), Int32.Parse (o [1])] = 99;
+			}
+			if (isTouchDown) {
+				//Vector3 offset = Camera.main.ScreenToWorldPoint (Input.mousePosition) - lastMousePosition;  
+				if (isNew) {
+					holder_parent = generateHolderCollections(2);
+					isNew = false;
+				} else {					
+					/*
+					 * 1. 获取零件信息
+					 * 2. 获取当前位置的地图素材
+					 * 3. 通过判断是否可以建造进行上色 绿色：可行 红色：不可行
+					 */  
+					processTheHolder(new Vector2(Input.GetTouch(touch_indicator).position.x, Input.GetTouch(touch_indicator).position.y));
 				}
 
-				isNew = true;
-				isTouchDown = false;
-				Destroy (holder_parent);
-			} else {
-				isNew = true;
-				isTouchDown = false;
-				Destroy (holder_parent);
-			}
-		}
-		if (isTouchDown) {
-			//Vector3 offset = Camera.main.ScreenToWorldPoint (Input.mousePosition) - lastMousePosition;  
-			if (isNew) {
-				holder_parent = generateHolderCollections(0);
-				isNew = false;
-			} else {					
-				/*
-				 * 1. 获取零件信息
-				 * 2. 获取当前位置的地图素材
-				 * 3. 通过判断是否可以建造进行上色 绿色：可行 红色：不可行
-				 */  
-				processTheHolder(new Vector2(Input.GetTouch(touch_indicator).position.x, Input.GetTouch(touch_indicator).position.y));
-			}
-
+				}
+		}catch{
 		}
 		lastMousePosition = Camera.main.ScreenToWorldPoint (Input.mousePosition); 
+	}
+
+	private bool isButtonRealsed()
+	{
+		if (Input.GetTouch(touch_indicator).phase == TouchPhase.Ended && isTouchDown) {
+			return true;
+		}
+		return false;
 	}
 
 	private void processTheHolder(Vector2 input)
 	{
 		mapOccupiedList.Clear ();
 		string[] o_name = getObjectName (input.x,input.y);
-		//GameObject go = GameObject.Find (o_name[0]+','+o_name[1]);
-		int[] x = getX(GlobalVariable.part_model_T);
-		int[] y = getY (GlobalVariable.part_model_T);
+		int[] x = getX(model);
+		int[] y = getY (model);
 		int count = 0;
 		foreach(Transform child in holder_parent.transform)
 		{
@@ -112,7 +125,6 @@ public class PathPartController : MonoBehaviour {
 			if (temp) {
 				child.transform.position = temp.transform.position;
 				mapOccupiedList.Add (name);
-
 				if (positionIsAvaliable (name [0], name [1])) {
 					Color color = child.GetComponent<SpriteRenderer> ().color;
 					color.r = 0f;
@@ -150,11 +162,11 @@ public class PathPartController : MonoBehaviour {
 	private GameObject generateHolderCollections(int type)
 	{
 
-
+		model = getPartType (type);
  		GameObject parent = new GameObject ();
-		int holder_number = 4;
-		int[] x = getX(GlobalVariable.part_model_T);
-		int[] y = getY (GlobalVariable.part_model_T);
+		int holder_number = getHolderNumber(model);
+		int[] x = getX(model);
+		int[] y = getY (model);
 		positionCheck = new bool[x.Length];
 		float width = pathHolder.GetComponent<SpriteRenderer> ().bounds.size.x;
 		float height = pathHolder.GetComponent<SpriteRenderer> ().bounds.size.y;
@@ -162,16 +174,37 @@ public class PathPartController : MonoBehaviour {
 		for (int i = 0; i < holder_number; i++) {
 			GameObject holder = Instantiate (pathHolder);
 			holder.GetComponent<SpriteRenderer> ().sortingOrder = 20;
-			if (i == 0) {
-				holder.transform.position = position;
-			} else {
-				Vector2 new_position = new Vector2 (position.x + (y [i] - y [0]) * width, position.y - (x [i]  -x [0]) *height );
-				holder.transform.position = new_position;
-			}
+			Vector2 new_position = new Vector2 (position.x + (y [i] - y [0]) * width, position.y - (x [i]  -x [0]) *height );
+			holder.transform.position = new_position;
 			holder.transform.parent = parent.transform;
 		}
 		return parent;
 
+	}
+
+	private int[,] getPartType(int type){
+		switch (type) {
+		case 0:
+			return GlobalVariable.part_model_T;
+		case 1:
+			return GlobalVariable.part_model_1;
+		case 2:
+			return GlobalVariable.part_model_L;
+		default:
+			return GlobalVariable.part_model_T;
+		}
+	}
+
+	private int getHolderNumber(int[,] model)
+	{
+		int count = 0;
+		for (int i = 0; i < model.GetLength (0); i++) {
+			for (int j = 0; j < model.GetLength (1); j++) {
+				if (model [i, j] == 1)
+					count++;
+			}
+		}
+		return count;
 	}
 
 	private int[] getX(int[,] model)

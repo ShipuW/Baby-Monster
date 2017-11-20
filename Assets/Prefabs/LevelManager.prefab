@@ -56,11 +56,11 @@ MonoBehaviour:
   - {fileID: 2800000, guid: f26c14d748045457da191b5b6f301c69, type: 3}
   mapElements:
   - tileTage: Grass2
-    color: {r: 0.15686275, g: 0.8352942, b: 0.36078432, a: 1}
+    color: {r: 0.87058824, g: 0.9647059, b: 0.77254903, a: 1}
     elementPrefab: {fileID: 1727604020175742, guid: 6737b490842854853ae6e1e3afea9916,
       type: 2}
-  - tileTage: Sand
-    color: {r: 0.92156863, g: 0.9137255, b: 0.15686275, a: 1}
+  - tileTage: Box
+    color: {r: 0.19607843, g: 0.24705882, b: 0.24705882, a: 1}
     elementPrefab: {fileID: 1338425609940162, guid: 3d62f88d2394c48b8bc5969ea698cc64,
       type: 2}
   - tileTage: Tree

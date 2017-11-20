@@ -5,8 +5,6 @@ using System;
 
 public class LevelManager : MonoBehaviour {
 
-	
-	
 	[SerializeField]
 	private Texture2D[] mapData;
 	[SerializeField]
@@ -17,8 +15,6 @@ public class LevelManager : MonoBehaviour {
 
 	[SerializeField]
 	private Transform map;
-
-
 
 	private Vector3 WorldStartPos
 	{
@@ -40,6 +36,7 @@ public class LevelManager : MonoBehaviour {
 
 	private void GenerateMap()
 	{
+		map = GameObject.Find ("MapCollection").transform;
 		for (int i = 0; i < mapData.Length; i++) {
 			for (int x = 0; x < mapData [i].width; x++) {
 				for (int y = 0; y < mapData [i].height; y++) {
@@ -58,7 +55,7 @@ public class LevelManager : MonoBehaviour {
 						if (newElement.MyTileTag == "Tree") {
 							go.GetComponent<SpriteRenderer> ().sortingOrder = 11;
 						}
-						if (newElement.MyTileTag == "Sand") {
+						if (newElement.MyTileTag == "Box") {
 							go.GetComponent<SpriteRenderer> ().sortingOrder = 10;
 						}
 
@@ -72,7 +69,7 @@ public class LevelManager : MonoBehaviour {
 	private void initMap(string rgb,int x, int y)
 	{
 		switch (rgb) {
-		case "DEF6C5FF": //grass
+		case "B3DFE1FF": //grass
 			GlobalVariable.map [x, y] = 1;
 			break;
 		case "323F3FFF": //box

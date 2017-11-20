@@ -14,5 +14,15 @@ public static class GlobalVariable
 	 * T 字: 0
 	 */
 	public static int[,] part_model_T = new int[,]{{0,0,0},{0,1,0},{1,1,1}};
+	/*
+	 * 1 字: 1 
+	 */
+	public static int[,] part_model_1 = new int[,]{{0,1,0},{0,1,0},{0,1,0}};
+	/*
+	 * L 字: 2 
+	 */
+	public static int[,] part_model_L = new int[,]{{1,0,0},{1,0,0},{1,1,1}};
+
+
 }
 
