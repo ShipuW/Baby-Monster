@@ -52,15 +52,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapData:
-  - {fileID: 2800000, guid: c433bcb9699dd4a91986f77239b0958d, type: 3}
-  - {fileID: 2800000, guid: f26c14d748045457da191b5b6f301c69, type: 3}
+  - {fileID: 2800000, guid: 6b7c25cb3068241ef83880e7666cb1f1, type: 3}
+  - {fileID: 2800000, guid: a3575b27e02eb4829b6c1d117ae9308b, type: 3}
   mapElements:
   - tileTage: Grass
-    color: {r: 0.7019608, g: 0.8745098, b: 0.88235295, a: 1}
+    color: {r: 0.7019608, g: 0.8745099, b: 0.882353, a: 1}
     elementPrefab: {fileID: 1727604020175742, guid: 6737b490842854853ae6e1e3afea9916,
       type: 2}
   - tileTage: Box
-    color: {r: 0.19607843, g: 0.24705882, b: 0.24705882, a: 1}
+    color: {r: 1, g: 0.62352943, b: 0.13725491, a: 1}
     elementPrefab: {fileID: 1716820730796184, guid: a69aae16acc5c47d4b804b53a8de3486,
       type: 2}
   - tileTage: Tree

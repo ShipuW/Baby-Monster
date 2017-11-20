@@ -8,7 +8,12 @@ public static class GlobalVariable
 	 * 3: 树
 	 * 99: path
 	 */
-	public static int[,] map = new int[30,30] ; 
+
+	public static float originX;
+
+	public static float originY;
+
+	public static int[,] map = new int[27,18] ; 
 
 	/*
 	 * T 字: 0

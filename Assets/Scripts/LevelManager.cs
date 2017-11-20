@@ -36,6 +36,8 @@ public class LevelManager : MonoBehaviour {
 
 	private void GenerateMap()
 	{
+		GlobalVariable.originX = WorldStartPos.x;
+		GlobalVariable.originY = WorldStartPos.y;
 		map = GameObject.Find ("MapCollection").transform;
 		for (int i = 0; i < mapData.Length; i++) {
 			for (int x = 0; x < mapData [i].width; x++) {
@@ -46,8 +48,9 @@ public class LevelManager : MonoBehaviour {
 
 						initMap(ColorUtility.ToHtmlStringRGBA(c),x,y);//init map
 
-						float x_position = WorldStartPos.x + defaultTile.bounds.size.x * x;
-						float y_position = WorldStartPos.y + defaultTile.bounds.size.y * y;
+
+						float x_position = GlobalVariable.originX + defaultTile.bounds.size.x * x;
+						float y_position = GlobalVariable.originY + defaultTile.bounds.size.y * y;
 
 						GameObject go = Instantiate (newElement.MyElementPrefab);
 						go.transform.position = new Vector2(x_position,y_position); 
@@ -72,7 +75,7 @@ public class LevelManager : MonoBehaviour {
 		case "B3DFE1FF": //grass
 			GlobalVariable.map [x, y] = 1;
 			break;
-		case "323F3FFF": //box
+		case "FF9F23FF": //box
 			GlobalVariable.map [x, y] = 2;
 			break;
 		case "35C419FF": // tree

@@ -89,9 +89,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c169fab5ae7934526913f04923df6eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultTile: {fileID: 21300000, guid: 206bc368386d7437fb630883746dd520, type: 3}
   supply: {fileID: 50135198597195944, guid: 2f6ab4b6cb48b410786e6934286dc11c, type: 2}
   damage: 10
   explosion: {fileID: 100000, guid: f75468363e2394440a081e9c175e6c93, type: 2}
+  pickupPiece: {fileID: 1421087003907778, guid: 5eeb47c49eb344f169da847b7ed4bcd2,
+    type: 2}
   radius: 3.5
 --- !u!212 &212827731507006928
 SpriteRenderer:
@@ -102,6 +105,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -117,6 +121,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5

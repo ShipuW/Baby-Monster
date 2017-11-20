@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114353513737085842}
   m_Layer: 0
   m_Name: PiecesManager
-  m_TagString: Untagged
+  m_TagString: Supply
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

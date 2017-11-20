@@ -168,7 +168,7 @@ public class PathPartController : MonoBehaviour {
  		GameObject parent = new GameObject ();
 		int holder_number = getHolderNumber(model);
 		int[] x = getX(model);
-		int[] y = getY (model);
+		int[] y = getY(model);
 		positionCheck = new bool[x.Length];
 		float width = pathHolder.GetComponent<SpriteRenderer> ().bounds.size.x;
 		float height = pathHolder.GetComponent<SpriteRenderer> ().bounds.size.y;
@@ -249,29 +249,14 @@ public class PathPartController : MonoBehaviour {
 		string Y = y.ToString();
 		return new string[]{X,Y};
 	}
-
-	private bool positionIsAvaliable(float f_x, float f_y)
-	{
-		float s_x = (Camera.main.ScreenToWorldPoint(new Vector3(f_x,f_y)).x - WorldStartPos.x) / 4;
-		float s_y = (Camera.main.ScreenToWorldPoint(new Vector3(f_x,f_y)).y - WorldStartPos.y) / 4;
-		int x = Convert.ToInt32(Math.Floor (s_x));
-		int y = Convert.ToInt32(Math.Floor (s_y));
-
-		if (x < 0 || y < 0 || x > 127 || y > 15) 
-			return false;
-
-		if (GlobalVariable.map [x, y] != 3) {
-			return true;
-		}
-		return false;
-	}
+		
 
 	private bool positionIsAvaliable(string x, string y)
 	{
 		int X = Int32.Parse (x);
 		int Y = Int32.Parse (y);
 
-		if (X < 0 || Y < 0 || X > 127 || Y > 15) 
+		if (X < 0 || Y < 0 || X >= 27 || Y >= 18) 
 			return false;
 		
 		if (GlobalVariable.map [X,Y] != 3 && GlobalVariable.map[X,Y] != 99 && GlobalVariable.map[X,Y] != 2) {

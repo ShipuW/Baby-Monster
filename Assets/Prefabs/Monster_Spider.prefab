@@ -129,12 +129,9 @@ MonoBehaviour:
   health: 10
   chaseRange: 30
   attackRange: 6
-  EnemyIndicator: {fileID: 1883883905224480, guid: bcd099918d3274704851207b0f24c86e,
-    type: 2}
   refreshPathTimer: 0
   indicator: {fileID: 0}
-  image: {fileID: 0}
-  Canvas: {fileID: 0}
+  indicatorManager: {fileID: 0}
 --- !u!212 &212951055560068926
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -144,6 +141,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -159,14 +157,15 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1338097493
-  m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 13
   m_Sprite: {fileID: 21300000, guid: 97f2fa8be9e464207979cb4dcee990af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -190,7 +189,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1279866655824890}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.39929998}
+  m_LocalPosition: {x: 18.64, y: -10.75, z: 0.39929998}
   m_LocalScale: {x: 12, y: 12, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
