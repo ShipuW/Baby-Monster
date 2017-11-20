@@ -129,12 +129,8 @@ MonoBehaviour:
   health: 10
   chaseRange: 30
   attackRange: 6
-  EnemyIndicator: {fileID: 1883883905224480, guid: bcd099918d3274704851207b0f24c86e,
-    type: 2}
   refreshPathTimer: 0
   indicator: {fileID: 0}
-  image: {fileID: 0}
-  Canvas: {fileID: 0}
 --- !u!212 &212951055560068926
 SpriteRenderer:
   m_ObjectHideFlags: 1

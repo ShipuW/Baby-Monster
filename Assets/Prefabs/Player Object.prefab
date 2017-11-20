@@ -92,11 +92,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   bulletSpeed: 20
-  Bullet: {fileID: 50402035283995004, guid: 03fa0ff5a28b243018c648ce2b8f904d, type: 2}
+  Bullet: {fileID: 50780931350347246, guid: 03fa0ff5a28b243018c648ce2b8f904d, type: 2}
   movespeed: 1
   InputDirection: {x: 0, y: 0, z: 0}
   bulletPosition: {x: 0, y: 0}
   move_offset: {x: 0, y: 0, z: 0}
+  process: {fileID: 0}
 --- !u!114 &114688453296475650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -113,7 +114,7 @@ MonoBehaviour:
   healthSlider: {fileID: 0}
   damageImage: {fileID: 0}
   flashSpeed: 5
-  flashColour: {r: 1, g: 0, b: 0, a: 0.191}
+  flashColor: {r: 1, g: 0, b: 0, a: 0.1}
 --- !u!212 &212994072504010600
 SpriteRenderer:
   m_ObjectHideFlags: 1

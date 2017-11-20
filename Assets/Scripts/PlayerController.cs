@@ -63,8 +63,8 @@ public class PlayerController : MonoBehaviour {
 		} else if (move.y < 0) {
 			y = -off_set;
 		}
-		move_offset = new Vector3 (x, y,0);
-		bulletPosition = new Vector2 (transform.position.x + move.x*10, transform.position.y + move.y*10);
+		move_offset = new Vector3 (x, y, 0);
+		bulletPosition = new Vector2 (transform.position.x + move.x * 10, transform.position.y + move.y * 10);
 		
 	}
 

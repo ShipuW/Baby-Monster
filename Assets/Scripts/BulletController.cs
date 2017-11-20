@@ -5,11 +5,12 @@ using System;
 
 public class BulletController : MonoBehaviour {
 
-	public Rigidbody2D supply; 
+	public Rigidbody2D supply;
+	public Rigidbody2D bulletBody; 
 	public int damage = 10;
-    public GameObject explosion;
     public float radius;
-
+	public float bombDelayTime;
+	private Animator anim;
 
 
     public static IEnumerator DelayToInvokeDo(Action action, float delaySeconds)
@@ -20,48 +21,34 @@ public class BulletController : MonoBehaviour {
 
 	void Start () 
     {
-
+		anim = GetComponent<Animator> ();
+		bulletBody = GetComponent<Rigidbody2D> ();
         StartCoroutine(DelayToInvokeDo(() =>
         {
             if(gameObject == null) {
                 return;
             }
-
-            GameObject explodeEffect = Instantiate(explosion,gameObject.transform.position,Quaternion.identity);  
-            //获得以炸弹为中心的一定范围内的所有对象  
-            // ParticleSystem hitParticles = explodeEffect.transform.GetChild(0).GetComponentInChildren<ParticleSystem>();
-            // hitParticles.play();
-            Destroy(gameObject);
-            Collider2D[] colliders= Physics2D.OverlapCircleAll(gameObject.transform.position,radius);
-            //如果炸弹碰到的是砖块，则销毁砖块  
-            foreach(Collider2D collider in colliders){  
-                string co_tag=collider.gameObject.tag;  
-                if(co_tag == "BreakableBox" || co_tag == "Monster"){  
-                    Destroy(collider.gameObject);  
-                }  
-            } 
-            Destroy(explodeEffect,0.5f); 
-            
-
-        }, 2.0f));
+			Debug.Log("stop the bullet");
+			bulletBody.isKinematic = true;
+			bulletBody.velocity = Vector3.zero;
+			anim.SetTrigger("explode");
+		}, bombDelayTime));
     }
 
-
-    void OnCollisionEnter2D(Collision2D coll) 
-    {
-        //Check the provided Collider2D parameter other to see if it is tagged "PickUp", if it is...
-        if (coll.gameObject.CompareTag("BreakableBox"))
-        {
-        	// Rigidbody2D supplyInstance = Instantiate(supply, coll.transform.position, new Quaternion(0, 0, 0, 0)) as Rigidbody2D;
-         //    Destroy(coll.gameObject);
-         //    Destroy(gameObject);
-        } else if (coll.gameObject.CompareTag("Monster")) {
-            //Destroy(coll.gameObject);
-			// MonsterController monster = coll.gameObject.GetComponent<MonsterController>();
-			// monster.takeDamage (damage);
-			// Debug.Log ("Enemy got hit!");
-   //          Destroy(gameObject);
-
-        }
-    }
+	void finishExplosion() {
+		Collider2D[] colliders= Physics2D.OverlapCircleAll(gameObject.transform.position,radius);
+		//如果炸弹碰到的是砖块，则销毁砖块  
+		foreach(Collider2D collider in colliders){  
+			string co_tag=collider.gameObject.tag;  
+			if (co_tag == "BreakableBox") {  
+				Destroy (collider.gameObject);  
+			} else if (co_tag == "Monster") {
+				MonsterController monCtrl = collider.gameObject.GetComponent<MonsterController> ();
+				if (monCtrl != null) {
+					monCtrl.takeDamage (damage);
+				}
+			}
+		}
+		Destroy (gameObject);
+	}
 }

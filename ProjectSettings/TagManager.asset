@@ -10,6 +10,7 @@ TagManager:
   - BreakableBox
   - soldier
   - PathBlock
+  - EnemyIndicatorManager
   layers:
   - Default
   - TransparentFX

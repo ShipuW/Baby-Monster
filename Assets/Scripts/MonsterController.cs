@@ -19,17 +19,17 @@ public class MonsterController : MonoBehaviour {
 	private float targetDist;
 	private GameObject nearestPath;
 	public float refreshPathTimer;
-	private float lastRefresh;
+	private float lastRefresh = 0;
 	bool targetPlayer;
 	private Vector3 direction;
 	[SerializeField]
-	private GameObject indicator;
-	public EnemyIndicatorManager indicatorManager;
+	GameObject indicator;
+	EnemyIndicatorManager indicatorManager;
 	int attackDamage = 10;
 	int MoveSpeed = 4;
 	Camera camera;
-	Vector3 smoothVelocity = Vector3.zero;
-	float moveSpeed = 1f;
+	bool isDead;
+
 	// Use this for initialization
 	void Start () {
 		player = GameObject.FindWithTag ("Player").transform;
@@ -38,11 +38,16 @@ public class MonsterController : MonoBehaviour {
 		anim.SetInteger ("StateNum", 0);
 		targetPlayer = true;
 		camera = Camera.main;
-		indicator = indicatorManager.addIndicator ();
+		indicatorManager = GameObject.FindGameObjectWithTag ("EnemyIndicatorManager").GetComponent<EnemyIndicatorManager>();
+		indicator =indicatorManager.addIndicator ();
+		isDead = false;
 	}
 
 	// Update is called once per frame
 	void Update () {
+		if (isDead) {
+			return;
+		}
 		GetNearestPathBlock ();
 		distToPlayer = Vector2.Distance (transform.position, player.position);
 		distToPath = nearestPath == null? float.MaxValue : Vector2.Distance (transform.position, nearestPath.transform.position);
@@ -75,8 +80,11 @@ public class MonsterController : MonoBehaviour {
 	public void takeDamage(int value) {
 		health -= value;
 		if (health <= 0) {
+			isDead = true;
+			//anim.SetInteger ("StateNum", 3);
+			anim.enabled=false;
 			GetComponent<SpriteRenderer> ().color = Color.grey;
-			Destroy (gameObject, .5f);
+			Destroy (gameObject, 1f);
 			ScoreManager.score += scoreValue;
 		}
 	}

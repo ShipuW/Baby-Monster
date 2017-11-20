@@ -36,7 +36,7 @@ public class BombCircleProcess : MonoBehaviour {
 		}
 
 		if (currentAmout < targetProcess) {
-			Debug.Log("currentAmount:" + currentAmout.ToString());
+			//Debug.Log("currentAmount:" + currentAmout.ToString());
 			
 			currentAmout += speed;
 			if(currentAmout > targetProcess)
