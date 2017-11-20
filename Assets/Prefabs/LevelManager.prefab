@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4660085179733300}
-  - component: {fileID: 114778939775356802}
+  - component: {fileID: 114564455977349172}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114778939775356802
+--- !u!114 &114564455977349172
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -55,24 +55,16 @@ MonoBehaviour:
   - {fileID: 2800000, guid: c433bcb9699dd4a91986f77239b0958d, type: 3}
   - {fileID: 2800000, guid: f26c14d748045457da191b5b6f301c69, type: 3}
   mapElements:
-  - tileTage: Grass2
-    color: {r: 0.87058824, g: 0.9647059, b: 0.77254903, a: 1}
+  - tileTage: Grass
+    color: {r: 0.7019608, g: 0.8745098, b: 0.88235295, a: 1}
     elementPrefab: {fileID: 1727604020175742, guid: 6737b490842854853ae6e1e3afea9916,
       type: 2}
   - tileTage: Box
     color: {r: 0.19607843, g: 0.24705882, b: 0.24705882, a: 1}
-    elementPrefab: {fileID: 1338425609940162, guid: 3d62f88d2394c48b8bc5969ea698cc64,
+    elementPrefab: {fileID: 1716820730796184, guid: a69aae16acc5c47d4b804b53a8de3486,
       type: 2}
   - tileTage: Tree
-    color: {r: 1, g: 0.96732736, b: 0.89705884, a: 1}
-    elementPrefab: {fileID: 1442741830124386, guid: 9baab95a7bf244e2095bdd5c11179ca8,
-      type: 2}
-  - tileTage: Box
-    color: {r: 0.9019608, g: 0.6156863, b: 0, a: 1}
-    elementPrefab: {fileID: 1698240541973346, guid: 55b37b5e507344244bcd5881ffb2e2de,
-      type: 2}
-  - tileTage: Stone
-    color: {r: 0.16911763, g: 0.1383326, b: 0.07212369, a: 1}
+    color: {r: 0.20784314, g: 0.76862746, b: 0.09803922, a: 1}
     elementPrefab: {fileID: 1442741830124386, guid: 9baab95a7bf244e2095bdd5c11179ca8,
       type: 2}
   defaultTile: {fileID: 21300000, guid: 206bc368386d7437fb630883746dd520, type: 3}
