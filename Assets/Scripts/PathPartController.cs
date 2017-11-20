@@ -10,6 +10,7 @@ public class PathPartController : MonoBehaviour {
 	[SerializeField]
 	private GameObject pathHolder;
 
+	private PiecesManager piecesManager;
 	private bool isTouchDown = false; //是否点击选中零件了按钮
 	private bool isNew = true;	//要生成一个新零件吗
 	private Vector3 lastMousePosition = Vector3.zero;  
@@ -51,6 +52,7 @@ public class PathPartController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		WorldStartPos = Camera.main.ScreenToWorldPoint (new Vector3(0,0));
+		piecesManager = GetComponent<PiecesManager> ();
 	}
 
 
@@ -162,7 +164,7 @@ public class PathPartController : MonoBehaviour {
 	private GameObject generateHolderCollections(int type)
 	{
 
-		model = getPartType (type);
+		model = getCurrentModel ();
  		GameObject parent = new GameObject ();
 		int holder_number = getHolderNumber(model);
 		int[] x = getX(model);
@@ -180,6 +182,10 @@ public class PathPartController : MonoBehaviour {
 		}
 		return parent;
 
+	}
+
+	private int[,] getCurrentModel () {
+		return piecesManager.currentPiece;
 	}
 
 	private int[,] getPartType(int type){
