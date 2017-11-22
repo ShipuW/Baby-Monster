@@ -64,6 +64,7 @@ public class BulletController : MonoBehaviour {
 				if(co_tag == "BreakableBox"){
 
 					piece[GetXFromPosition(collider.gameObject.transform.position.x) - x + 1, GetYFromPosition(collider.gameObject.transform.position.y) - y + 1] = 1;
+					
 					Destroy(collider.gameObject);
 				}
             }
@@ -71,7 +72,7 @@ public class BulletController : MonoBehaviour {
 			GameObject pickup = Instantiate(pickupPiece,gameObject.transform.position,Quaternion.identity);
 			
 			PickupPiece pickupClass = pickup.GetComponent<PickupPiece> ();
-				pickupClass.generatePieceCollections(piece, transform.position);
+				pickupClass.generatePieceCollections(RotatePieceAfterGenerate(piece), transform.position);
 
 			
             Destroy(explodeEffect,0.5f); 
@@ -104,4 +105,23 @@ public class BulletController : MonoBehaviour {
 
         }
     }
+
+	public int[,] RotatePieceAfterGenerate(int[,] matrix)
+	{
+		int[,] oldMatrix = matrix;
+		int[,] newMatrix = new int[oldMatrix.GetLength(1), oldMatrix.GetLength(0)];
+		int newColumn = 0;
+		int newRow = oldMatrix.GetLength(0) - 1;
+		for (int oldRow = 0; oldRow < oldMatrix.GetLength(0); oldRow++)
+		{
+			newRow = newMatrix.GetLength(0) - 1;
+			for (int oldColumn = 0; oldColumn < oldMatrix.GetLength(1); oldColumn++)
+			{
+				newMatrix[newRow, newColumn] = oldMatrix[oldRow, oldColumn];
+				newRow--;
+			}
+			newColumn++;
+		}
+www		return newMatrix;
+	}
 }

@@ -64,4 +64,5 @@ public class PiecesManager : MonoBehaviour {
 	    }
 		currentPiece = newMatrix;
 	}
+		
 }

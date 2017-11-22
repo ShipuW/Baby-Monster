@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3112e7e7c2dfe4855aaf105c55dbcd91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpBlock: {fileID: 1338425609940162, guid: 3d62f88d2394c48b8bc5969ea698cc64,
+  pickUpBlock: {fileID: 1907870824125432, guid: 6bbd4335a66bd42a38f34584db27b2b7,
     type: 2}
 --- !u!212 &212327124596781602
 SpriteRenderer:
