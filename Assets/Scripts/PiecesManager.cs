@@ -35,7 +35,9 @@ public class PiecesManager : MonoBehaviour {
 		
 	}
 
-
+	public void SetCurrentPiece (int[,] pickup) {
+		currentPiece = pickup;
+	}
 
 	public void ResetPiece() {
 		currentPiece = new int [3, 3] {

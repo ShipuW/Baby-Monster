@@ -11,6 +11,7 @@ TagManager:
   - soldier
   - PathBlock
   - Ground
+  - Piece
   layers:
   - Default
   - TransparentFX

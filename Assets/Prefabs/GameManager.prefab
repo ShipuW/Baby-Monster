@@ -53,3 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelManager: {fileID: 1518732252874078, guid: c6a63d2e04ba04b79a4b01f1e03995a5,
     type: 2}
+  piecesManager: {fileID: 1839729206687860, guid: 0245f308fb74942959f202294dd61753,
+    type: 2}

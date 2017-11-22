@@ -44,35 +44,36 @@ public class BulletController : MonoBehaviour {
 			// hitParticles.play();
 			Destroy(gameObject);
 
-				int x = GetXFromPosition(gameObject.transform.position.x);
-				int y = GetYFromPosition(gameObject.transform.position.y);
+			int x = GetXFromPosition(gameObject.transform.position.x);
+			int y = GetYFromPosition(gameObject.transform.position.y);
 
-			
-				int [,] piece = new int [3, 3] {
-					{0, 0, 0} ,		/*  初始化索引号为 0 的行 */
-					{0, 0, 0} , 	/*  初始化索引号为 1 的行 */
-					{0, 0, 0}   	/*  初始化索引号为 2 的行 */
-				};
-			
-            Collider2D[] colliders= Physics2D.OverlapCircleAll(gameObject.transform.position,radius);
-            //如果炸弹碰到的是砖块，则销毁砖块  
-            foreach(Collider2D collider in colliders){  
-                string co_tag=collider.gameObject.tag;  
+		
+			int [,] piece = new int [3, 3] {
+				{0, 0, 0} ,		/*  初始化索引号为 0 的行 */
+				{0, 0, 0} , 	/*  初始化索引号为 1 的行 */
+				{0, 0, 0}   	/*  初始化索引号为 2 的行 */
+			};
+			bool explodedBox = false;
+        	Collider2D[] colliders= Physics2D.OverlapCircleAll(gameObject.transform.position,radius);
+        //如果炸弹碰到的是砖块，则销毁砖块  
+        	foreach(Collider2D collider in colliders){  
+            	string co_tag=collider.gameObject.tag;  
                 if(co_tag == "Monster"){  
                     Destroy(collider.gameObject);  
                 } 
 				if(co_tag == "BreakableBox"){
-
+						explodedBox = true;
 					piece[GetXFromPosition(collider.gameObject.transform.position.x) - x + 1, GetYFromPosition(collider.gameObject.transform.position.y) - y + 1] = 1;
 					
 					Destroy(collider.gameObject);
 				}
             }
-
-			GameObject pickup = Instantiate(pickupPiece,gameObject.transform.position,Quaternion.identity);
-			
-			PickupPiece pickupClass = pickup.GetComponent<PickupPiece> ();
+			if(explodedBox) {
+				GameObject pickup = Instantiate(pickupPiece,gameObject.transform.position,Quaternion.identity);
+				PickupPiece pickupClass = pickup.GetComponent<PickupPiece> ();
 				pickupClass.generatePieceCollections(RotatePieceAfterGenerate(piece), transform.position);
+			}
+			
 
 			
             Destroy(explodeEffect,0.5f); 
@@ -122,6 +123,6 @@ public class BulletController : MonoBehaviour {
 			}
 			newColumn++;
 		}
-www		return newMatrix;
+		return newMatrix;
 	}
 }

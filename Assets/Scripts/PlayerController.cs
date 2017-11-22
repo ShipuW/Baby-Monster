@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour {
 		anim = GetComponent<Animator> ();
     }
 
-    public void On_SkillJoystickUp( ){
+    public void On_SkillJoystickUp(){
 
 		if(circleProcess.currentBombNum == 0)
 			return;
@@ -116,7 +116,10 @@ public class PlayerController : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other) 
     {
-        //Check the provided Collider2D parameter other to see if it is tagged "PickUp", if it is...
+		if (other.gameObject.CompareTag ("Piece")) {
+			other.gameObject.SetActive (false);
+			PiecesManager.instance.SetCurrentPiece(other.GetComponent<PickupPiece> ().piece);
+		}
         if (other.gameObject.CompareTag("Supply"))
         {
 			Supply supply = other.gameObject.GetComponent<Supply>();
