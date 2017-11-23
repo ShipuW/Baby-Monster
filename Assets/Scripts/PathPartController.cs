@@ -26,6 +26,8 @@ public class PathPartController : MonoBehaviour {
 
 	private int[,] model; //碎片对应模型
 
+	private bool rotate = false;
+
 	public void moveIsHappening()
 	{
 		isMovementTouched = true;	
@@ -53,13 +55,27 @@ public class PathPartController : MonoBehaviour {
 		WorldStartPos = Camera.main.ScreenToWorldPoint (new Vector3(0,0));
 	}
 
-
+	public void ButtonPutUp()
+	{
+		if (rotate) {
+			rotatedCurrentModel ();
+			GameObject thumbnail = GameObject.Find ("HoldingPiece");
+			HoldingPieceManager pieceManager = thumbnail.GetComponent<HoldingPieceManager> ();
+			pieceManager.updatePiece ();
+			rotate = false;
+		}
+	}
 
 
 	// Update is called once per frame
 	void FixedUpdate () { 
 		try{
 			if (isButtonRealsed()) {
+				if (currentPositionIsOnButton ())
+				{
+					rotate = true;
+				}
+				else{
 				if (currentPositionsAreAvaliable ()) {
 					/*
 				 	*如果当前位置有效 则生成路径 
@@ -80,9 +96,9 @@ public class PathPartController : MonoBehaviour {
 					isNew = true;
 					isTouchDown = false;
 					Destroy (holder_parent);
-				}
+					}}
 			}
-			if (isTouchDown) {
+			if (isTouchDown && !currentPositionIsOnButton()) {
 				//Vector3 offset = Camera.main.ScreenToWorldPoint (Input.mousePosition) - lastMousePosition;  
 				if (isNew) {
 					holder_parent = generateHolderCollections(2);
@@ -93,11 +109,11 @@ public class PathPartController : MonoBehaviour {
 					 * 2. 获取当前位置的地图素材
 					 * 3. 通过判断是否可以建造进行上色 绿色：可行 红色：不可行
 					 */  
-					processTheHolder(new Vector2(Input.GetTouch(touch_indicator).position.x, Input.GetTouch(touch_indicator).position.y));
+					processTheHolder(new Vector2(Input.GetTouch(touch_indicator).position.x-200, Input.GetTouch(touch_indicator).position.y+200));
 				}
 
 				}
-		}catch{
+			}catch{
 		}
 		lastMousePosition = Camera.main.ScreenToWorldPoint (Input.mousePosition); 
 	}
@@ -170,7 +186,7 @@ public class PathPartController : MonoBehaviour {
 		positionCheck = new bool[x.Length];
 		float width = pathHolder.GetComponent<SpriteRenderer> ().bounds.size.x;
 		float height = pathHolder.GetComponent<SpriteRenderer> ().bounds.size.y;
-		Vector2 position = Camera.main.ScreenToWorldPoint (Input.GetTouch(touch_indicator).position);
+		Vector2 position = Camera.main.ScreenToWorldPoint (Input.GetTouch(touch_indicator).position+new Vector2(-200,200));
 		for (int i = 0; i < holder_number; i++) {
 			GameObject holder = Instantiate (pathHolder);
 			holder.GetComponent<SpriteRenderer> ().sortingOrder = 20;
@@ -184,6 +200,10 @@ public class PathPartController : MonoBehaviour {
 
 	private int[,] getCurrentModel () {
 		return PiecesManager.instance.currentPiece;
+	}
+	
+	private void rotatedCurrentModel(){
+		PiecesManager.instance.RotatePiece ();
 	}
 
 	private int[,] getPartType(int type){
@@ -263,5 +283,41 @@ public class PathPartController : MonoBehaviour {
 		return false;
 	}
 
+	private bool isConnected(int x, int y)
+	{
+		if (GlobalVariable.map [x, y] == 101) {
+			return true;
+		} else if (GlobalVariable.map [x, y] == 99) {
+			if (isConnected (x - 1, y)) {
+				return true;
+			} else if (isConnected (x + 1, y)) {
+				return true;
+			} else if (isConnected (x, y - 1)) {
+				return true;
+			} else if (isConnected (x, y + 1)) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+
+
+	private bool currentPositionIsOnButton()
+	{
+		GameObject button = GameObject.Find("PutPart");
+		float width = 120;
+		float height = 120;
+
+		Vector2 input = Input.GetTouch (touch_indicator).position;
+		Vector3 postion = button.transform.position;
+		if ((input.x < postion.x + width / 2) && (input.x > postion.x - width / 2) && (input.y < postion.y + height / 2) && (input.y > postion.y - height / 2)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 }

@@ -51,20 +51,21 @@ public class PiecesManager : MonoBehaviour {
 
 	public void RotatePiece()
 	{
-		int[,] oldMatrix = currentPiece;
-	    int[,] newMatrix = new int[oldMatrix.GetLength(1), oldMatrix.GetLength(0)];
-	    int newColumn, newRow = 0;
-	    for (int oldColumn = oldMatrix.GetLength(1) - 1; oldColumn >= 0; oldColumn--)
-	    {
-	        newColumn = 0;
-	        for (int oldRow = 0; oldRow < oldMatrix.GetLength(0); oldRow++)
-	        {
-	            newMatrix[newRow, newColumn] = oldMatrix[oldRow, oldColumn];
-	            newColumn++;
-	        }
-	        newRow++;
-	    }
-		currentPiece = newMatrix;
+		int col = currentPiece.GetLength (0);
+		int row = currentPiece.GetLength(1);
+		int[,] temp =new int[col,row];
+		int dst = row-1;
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < col; j++) {
+				temp [j, dst] = currentPiece [i,j];
+			}
+			dst--;
+		}
+
+		for (int i = 0; i < col; i++)
+			for (int j = 0; j < col; j++)
+				currentPiece [i, j] = temp [i, j];
+ 		Debug.Log ("test");
 	}
 		
 }
