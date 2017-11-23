@@ -280,7 +280,7 @@
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\GameOverManager.cs" />
      <Compile Include="Assets\Scripts\GlobalVariable.cs" />
-     <Compile Include="Assets\Scripts\HoldingManager.cs" />
+     <Compile Include="Assets\Scripts\HoldingPieceManager.cs" />
      <Compile Include="Assets\Scripts\LevelManager.cs" />
      <Compile Include="Assets\Scripts\Loader.cs" />
      <Compile Include="Assets\Scripts\menuBtnController.cs" />

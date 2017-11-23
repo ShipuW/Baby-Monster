@@ -63,7 +63,10 @@ public class BulletController : MonoBehaviour {
                 } 
 				if(co_tag == "BreakableBox"){
 						explodedBox = true;
-					piece[GetXFromPosition(collider.gameObject.transform.position.x) - x + 1, GetYFromPosition(collider.gameObject.transform.position.y) - y + 1] = 1;
+						int boxX = GetXFromPosition(collider.gameObject.transform.position.x);
+						int boxY = GetYFromPosition(collider.gameObject.transform.position.y);
+						GlobalVariable.map[boxX,boxY] = 1;
+						piece[boxX - x + 1, boxY - y + 1] = 1;
 					
 					Destroy(collider.gameObject);
 				}

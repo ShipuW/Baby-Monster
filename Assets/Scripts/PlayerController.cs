@@ -12,10 +12,12 @@ public class PlayerController : MonoBehaviour {
 	public Vector2 bulletPosition;
 	public Vector3 move_offset;
 	public GameObject process;
+	public GameObject holdingPiece;
 
 	private Rigidbody2D rb2d;       //Store a reference to the Rigidbody2D component required to use 2D Physics.
 	private PlayerHealth health;
 	private BombCircleProcess circleProcess;
+	private HoldingPieceManager holdingPieceManager;
 	private int maxBombNum;
 	private int currentBombNum;
 	private Animator anim;
@@ -29,6 +31,7 @@ public class PlayerController : MonoBehaviour {
 		health = GetComponent<PlayerHealth> ();
 		circleProcess = process.GetComponent<BombCircleProcess> ();
 		anim = GetComponent<Animator> ();
+		holdingPieceManager = holdingPiece.GetComponent<HoldingPieceManager> ();
     }
 
     public void On_SkillJoystickUp(){
@@ -119,6 +122,7 @@ public class PlayerController : MonoBehaviour {
 		if (other.gameObject.CompareTag ("Piece")) {
 			other.gameObject.SetActive (false);
 			PiecesManager.instance.SetCurrentPiece(other.GetComponent<PickupPiece> ().piece);
+			holdingPieceManager.updatePiece ();
 		}
         if (other.gameObject.CompareTag("Supply"))
         {
