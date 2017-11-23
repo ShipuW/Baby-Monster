@@ -9,18 +9,18 @@ public class BulletController : MonoBehaviour {
 	private Sprite defaultTile;
 
 	public Rigidbody2D supply; 
+	public Rigidbody2D bulletBody; 
 	public int damage = 10;
-    public GameObject explosion;
 	public GameObject pickupPiece;
     public float radius;
-
+    public float bombDelayTime;
+	private Animator anim;
 	private Vector3 WorldStartPos
 	{
 		get{
 			return Camera.main.ScreenToWorldPoint (new Vector3(0,0));
 		}
 	}
-
 
 
     public static IEnumerator DelayToInvokeDo(Action action, float delaySeconds)
@@ -31,58 +31,22 @@ public class BulletController : MonoBehaviour {
 
 	void Start () 
     {
-
+		anim = GetComponent<Animator> ();
+		bulletBody = GetComponent<Rigidbody2D> ();
         StartCoroutine(DelayToInvokeDo(() =>
         {
             if(gameObject == null) {
                 return;
             }
-
-			GameObject explodeEffect = Instantiate(explosion,gameObject.transform.position,Quaternion.identity);  
-			//获得以炸弹为中心的一定范围内的所有对象  
-			// ParticleSystem hitParticles = explodeEffect.transform.GetChild(0).GetComponentInChildren<ParticleSystem>();
-			// hitParticles.play();
-			Destroy(gameObject);
-
-			int x = GetXFromPosition(gameObject.transform.position.x);
-			int y = GetYFromPosition(gameObject.transform.position.y);
-
-		
-			int [,] piece = new int [3, 3] {
-				{0, 0, 0} ,		/*  初始化索引号为 0 的行 */
-				{0, 0, 0} , 	/*  初始化索引号为 1 的行 */
-				{0, 0, 0}   	/*  初始化索引号为 2 的行 */
-			};
-			bool explodedBox = false;
-        	Collider2D[] colliders= Physics2D.OverlapCircleAll(gameObject.transform.position,radius);
-        //如果炸弹碰到的是砖块，则销毁砖块  
-        	foreach(Collider2D collider in colliders){  
-            	string co_tag=collider.gameObject.tag;  
-                if(co_tag == "Monster"){  
-                    Destroy(collider.gameObject);  
-                } 
-				if(co_tag == "BreakableBox"){
-						explodedBox = true;
-						int boxX = GetXFromPosition(collider.gameObject.transform.position.x);
-						int boxY = GetYFromPosition(collider.gameObject.transform.position.y);
-						GlobalVariable.map[boxX,boxY] = 1;
-						piece[boxX - x + 1, boxY - y + 1] = 1;
-					
-					Destroy(collider.gameObject);
-				}
-            }
-			if(explodedBox) {
-				GameObject pickup = Instantiate(pickupPiece,gameObject.transform.position,Quaternion.identity);
-				PickupPiece pickupClass = pickup.GetComponent<PickupPiece> ();
-				pickupClass.generatePieceCollections(RotatePieceAfterGenerate(piece), transform.position);
-			}
-			
+			Debug.Log("stop the bullet");
+			bulletBody.isKinematic = true;
+			bulletBody.velocity = Vector3.zero;
+			anim.SetTrigger("explode");
 
 			
-            Destroy(explodeEffect,0.5f); 
             
 
-        }, 2.0f));
+        }, bombDelayTime));
     }
 
 	int GetXFromPosition (float x){
@@ -92,23 +56,46 @@ public class BulletController : MonoBehaviour {
 		return (int) ((y - GlobalVariable.originY) / defaultTile.bounds.size.y);
 	}
 
-    void OnCollisionEnter2D(Collision2D coll) 
-    {
-        //Check the provided Collider2D parameter other to see if it is tagged "PickUp", if it is...
-        if (coll.gameObject.CompareTag("BreakableBox"))
-        {
-        	// Rigidbody2D supplyInstance = Instantiate(supply, coll.transform.position, new Quaternion(0, 0, 0, 0)) as Rigidbody2D;
-         //    Destroy(coll.gameObject);
-         //    Destroy(gameObject);
-        } else if (coll.gameObject.CompareTag("Monster")) {
-            //Destroy(coll.gameObject);
-			// MonsterController monster = coll.gameObject.GetComponent<MonsterController>();
-			// monster.takeDamage (damage);
-			// Debug.Log ("Enemy got hit!");
-   //          Destroy(gameObject);
-
+    void finishExplosion() {
+		int x = GetXFromPosition(gameObject.transform.position.x);
+		int y = GetYFromPosition(gameObject.transform.position.y);
+	
+		int [,] piece = new int [3, 3] {
+			{0, 0, 0} ,		/*  初始化索引号为 0 的行 */
+			{0, 0, 0} , 	/*  初始化索引号为 1 的行 */
+			{0, 0, 0}   	/*  初始化索引号为 2 的行 */
+		};
+		bool explodedBox = false;
+    	Collider2D[] colliders= Physics2D.OverlapCircleAll(gameObject.transform.position,radius);
+    //如果炸弹碰到的是砖块，则销毁砖块  
+    	foreach(Collider2D collider in colliders){  
+        	string co_tag=collider.gameObject.tag;  
+            if(co_tag == "Monster"){  
+                MonsterController monCtrl = collider.gameObject.GetComponent<MonsterController> ();
+				if (monCtrl != null) {
+					monCtrl.takeDamage (damage);
+				}
+            } 
+			if(co_tag == "BreakableBox"){
+					explodedBox = true;
+					int boxX = GetXFromPosition(collider.gameObject.transform.position.x);
+					int boxY = GetYFromPosition(collider.gameObject.transform.position.y);
+					GlobalVariable.map[boxX,boxY] = 1;
+					piece[boxX - x + 1, boxY - y + 1] = 1;
+				
+				Destroy(collider.gameObject);
+			}
         }
-    }
+		if(explodedBox) {
+			GameObject pickup = Instantiate(pickupPiece,gameObject.transform.position,Quaternion.identity);
+			PickupPiece pickupClass = pickup.GetComponent<PickupPiece> ();
+			pickupClass.generatePieceCollections(RotatePieceAfterGenerate(piece), transform.position);
+		}
+
+
+		Destroy (gameObject);
+
+	}
 
 	public int[,] RotatePieceAfterGenerate(int[,] matrix)
 	{
@@ -127,5 +114,8 @@ public class BulletController : MonoBehaviour {
 			newColumn++;
 		}
 		return newMatrix;
-	}
+
+    }
+
+	
 }

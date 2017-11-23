@@ -12,6 +12,7 @@ TagManager:
   - PathBlock
   - Ground
   - Piece
+  - EnemyIndicatorManager
   layers:
   - Default
   - TransparentFX
