@@ -70,6 +70,14 @@ public class LevelManager : MonoBehaviour {
 						if (newElement.MyTileTag == "Box") {
 							go.GetComponent<SpriteRenderer> ().sortingOrder = 10;
 						}
+						if (newElement.MyTileTag == "Start") {
+							go.GetComponent<SpriteRenderer> ().sortingOrder = 12;
+						}
+
+						if (newElement.MyTileTag == "End") {
+							go.GetComponent<SpriteRenderer> ().sortingOrder = 12;
+						}
+
 
 						go.transform.parent = map;
 					}
@@ -98,9 +106,13 @@ public class LevelManager : MonoBehaviour {
 			break;
 		case "FF0000FF": // start
 			GlobalVariable.map [x, y] = 5;
+			GlobalVariable.start[0] = x;
+			GlobalVariable.start[1] = y;
 			break;
 		case "0000FFFF": // end
 			GlobalVariable.map [x, y] = 6;
+			GlobalVariable.end [0] = x;
+			GlobalVariable.end [1] = y;
 			break;
 		default:
 			break;

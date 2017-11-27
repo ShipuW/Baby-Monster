@@ -919,9 +919,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxBombNum: 3
   currentBombNum: 3
-  speed: 0
-  process: {fileID: 0}
-  indicator: {fileID: 0}
+  speed: 1
+  process: {fileID: 1904804134}
+  indicator: {fileID: 1748588948}
 --- !u!1 &503431591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,6 +1129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 1778088333}
+  scoreManager: {fileID: 1975154614}
 --- !u!1 &678094614
 GameObject:
   m_ObjectHideFlags: 0
@@ -2514,6 +2515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathPart: {fileID: 1907870824125432, guid: 6bbd4335a66bd42a38f34584db27b2b7, type: 2}
   pathHolder: {fileID: 1869959819526928, guid: 6b8acce3c251e430fa87b3f864a2b119, type: 2}
+  player: {fileID: 1778088329}
 --- !u!95 &1778088331
 Animator:
   serializedVersion: 3
@@ -3185,7 +3187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71103ce470bc246d091bcc2ec14caea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTime: 60
+  time: 0
+  startTime: 500
 --- !u!114 &1975154615
 MonoBehaviour:
   m_ObjectHideFlags: 0

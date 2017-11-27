@@ -20,5 +20,9 @@ public static class GlobalVariable
 
 	public static int[,] map = new int[27,18] ; 
 
+	public static int[] start =new int[]{0,0};
+
+	public static int[] end = new int[]{0,0};
+
 }
 

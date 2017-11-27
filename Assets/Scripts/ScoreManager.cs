@@ -4,7 +4,7 @@ using System.Collections;
 
 public class ScoreManager : MonoBehaviour
 {
-	public static int time;
+	public int time;
 	public int startTime = 60;
 
 	Text text;
@@ -28,6 +28,10 @@ public class ScoreManager : MonoBehaviour
 	void Update ()
 	{
 		text.text = "Time: " + time;
+		if (time <= 10) {
+			text.text = "<color=#B71B1BFF>"+"Time:" + time+"</color>";
+		}
+
 	}
 
 	IEnumerator DoCountDown()  
