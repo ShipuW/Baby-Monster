@@ -73,15 +73,15 @@ MonoBehaviour:
       type: 2}
   - tileTage: Stone
     color: {r: 0.19607843, g: 0.24705882, b: 0.24705882, a: 1}
-    elementPrefab: {fileID: 1442741830124386, guid: 8cda1972ea2bf496cbf45e8f4867338b,
+    elementPrefab: {fileID: 1759103635810578, guid: 8cda1972ea2bf496cbf45e8f4867338b,
       type: 2}
   - tileTage: Start
     color: {r: 1, g: 0, b: 0, a: 1}
-    elementPrefab: {fileID: 1442741830124386, guid: 95dfc12095f1948aeafbdbecd48ddba6,
+    elementPrefab: {fileID: 1010446068815976, guid: 95dfc12095f1948aeafbdbecd48ddba6,
       type: 2}
   - tileTage: End
     color: {r: 0, g: 0, b: 1, a: 1}
-    elementPrefab: {fileID: 1442741830124386, guid: 78b44cff14e2f47688623a9577a63714,
+    elementPrefab: {fileID: 1653249046002804, guid: 78b44cff14e2f47688623a9577a63714,
       type: 2}
   - tileTage: Grass
     color: {r: 0.91764706, g: 0.05882353, b: 0.90588236, a: 1}

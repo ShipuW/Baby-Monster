@@ -18,7 +18,7 @@ public class GameOverManager : MonoBehaviour
 	{
 		if (playerHealth.currentHealth <= 0 || scoreManager.time <= 0)
 		{
-			anim.SetTrigger("Win");
+			anim.SetTrigger("GameOver");
 
 		}
 

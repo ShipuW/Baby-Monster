@@ -87,11 +87,11 @@ public class LevelManager : MonoBehaviour {
 							go.GetComponent<SpriteRenderer> ().sortingOrder = 10;
 						}
 						if (newElement.MyTileTag == "Start") {
-							go.GetComponent<SpriteRenderer> ().sortingOrder = 12;
+							go.GetComponent<SpriteRenderer> ().sortingOrder = 9;
 						}
 
 						if (newElement.MyTileTag == "End") {
-							go.GetComponent<SpriteRenderer> ().sortingOrder = 12;
+							go.GetComponent<SpriteRenderer> ().sortingOrder = 8;
 						}
 
 

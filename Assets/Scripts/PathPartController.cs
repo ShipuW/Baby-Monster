@@ -10,7 +10,12 @@ public class PathPartController : MonoBehaviour {
 	[SerializeField]
 	private GameObject pathHolder;
 	[SerializeField]
+	private GameObject cart;
+	private GameObject cartObject;
+	[SerializeField]
 	private GameObject player;
+
+	private bool connected = false;
 
 	private bool isTouchDown = false; //是否点击选中零件了按钮
 	private bool isNew = true;	//要生成一个新零件吗
@@ -31,6 +36,11 @@ public class PathPartController : MonoBehaviour {
 	private bool rotate = false;
 
 	private bool[,] the_path ;
+
+	private int[] currPoint = new int[] {0, 0};
+	private int[] nextPoint = new int[] {0, 0};
+
+	Animator anim;
 
 	public void moveIsHappening()
 	{
@@ -58,6 +68,7 @@ public class PathPartController : MonoBehaviour {
 	void Start () {
 		WorldStartPos = Camera.main.ScreenToWorldPoint (new Vector3(0,0));
 		the_path  = new bool[GlobalVariable.map.GetLength(0), GlobalVariable.map.GetLength(1)]; 
+		anim = GetComponent<Animator>();
 	}
 
 	public void ButtonPutUp()
@@ -104,51 +115,42 @@ public class PathPartController : MonoBehaviour {
 					isTouchDown = false;
 					Destroy (holder_parent);
 					//判断是否联通
-						if(existPath(GlobalVariable.map,the_path,GlobalVariable.start,GlobalVariable.end))
-						{	
-							Debug.Log("Connected!!!!!");
+					if(existPath(GlobalVariable.map,the_path,GlobalVariable.start,GlobalVariable.end))
+					{	
+						
+						Debug.Log("Connected!!!!!");
+						if(connected == false) {
+							connected = true;
 							int x = GlobalVariable.start[0];
 							int y = GlobalVariable.start[1];
+
+							currPoint = GlobalVariable.start;
+							nextPoint = GlobalVariable.start;
 							GameObject ob = GameObject.Find(x.ToString()+','+y.ToString());
-
-							player.transform.position = new Vector2(ob.transform.position.x,ob.transform.position.y);
-							while(x != GlobalVariable.end[0] && y!=GlobalVariable.end[1])
-							{
-								the_path[x,y] = false;
-								if(the_path[x-1,y])
-								{
-									x = x-1;
-								}else if(the_path[x+1,y]){
-									x = x+1;
-								}else if(the_path[x,y-1]){
-									y = y-1;
-								}else if (the_path[x,y+1]){
-									y = y+1;
-								}
-								ob = GameObject.Find(x.ToString()+','+y.ToString());
-								player.transform.position = new Vector2(ob.transform.position.x,ob.transform.position.y);
-		
-							}
-
+							
+							cartObject = Instantiate (cart, ob.transform.position, Quaternion.identity);
+							CameraController.FollowCart(cartObject);
+//							player.transform.position = new Vector2(ob.transform.position.x,ob.transform.position.y);
 						}
-					
+					}
 				} else {
 					isNew = true;
 					isTouchDown = false;
 					Destroy (holder_parent);
 					}}
 			}
+
 			if (isTouchDown && !currentPositionIsOnButton()) {
 				//Vector3 offset = Camera.main.ScreenToWorldPoint (Input.mousePosition) - lastMousePosition;  
 				if (isNew) {
 					holder_parent = generateHolderCollections(2);
 					isNew = false;
 				} else {					
-					/*
-					 * 1. 获取零件信息
-					 * 2. 获取当前位置的地图素材
-					 * 3. 通过判断是否可以建造进行上色 绿色：可行 红色：不可行
-					 */  
+//					/*
+//					 * 1. 获取零件信息
+//					 * 2. 获取当前位置的地图素材
+//					 * 3. 通过判断是否可以建造进行上色 绿色：可行 红色：不可行
+//					 */  
 					processTheHolder(new Vector2(Input.GetTouch(touch_indicator).position.x-200, Input.GetTouch(touch_indicator).position.y+200));
 				}
 
@@ -156,6 +158,85 @@ public class PathPartController : MonoBehaviour {
 			}catch{
 		}
 		lastMousePosition = Camera.main.ScreenToWorldPoint (Input.mousePosition); 
+	}
+
+	void Update () {
+		if(connected){
+			if (compareArr (currPoint, GlobalVariable.end) == false) {
+				if (compareArr (currPoint, nextPoint)) {
+					int x = currPoint [0];
+					int y = currPoint [1];
+
+					the_path [x, y] = false;
+					if (the_path [x - 1, y]) {
+						x = x - 1;
+					} else if (the_path [x + 1, y]) {
+						x = x + 1;
+					} else if (the_path [x, y - 1]) {
+						y = y - 1;
+					} else if (the_path [x, y + 1]) {
+						y = y + 1;
+					}
+
+					nextPoint = new int[] { x, y };
+				} 
+
+
+				GameObject ob = GameObject.Find (nextPoint [0].ToString () + ',' + nextPoint [1].ToString ());
+
+				int symbolX = 0;
+				if (ob.transform.position.x - cartObject.transform.position.x > 1.0f) {
+					symbolX = 1;
+				} else if (ob.transform.position.x - cartObject.transform.position.x < -1.0f) {
+					symbolX = -1;
+				} else {
+					symbolX = 0;
+				}
+
+				int symbolY = 0;
+				if (ob.transform.position.x - cartObject.transform.position.x > 1.0f) {
+					symbolX = 1;
+				} else if (ob.transform.position.x - cartObject.transform.position.x < -1.0f) {
+					symbolX = -1;
+				} else {
+					symbolX = 0;
+				}
+				if (symbolX != 0 || symbolY != 0) {
+					cartObject.transform.position = new Vector2 ((float)(cartObject.transform.position.x + symbolX * 0.5), (float)(cartObject.transform.position.y + symbolY * 0.5));
+				} else {
+					currPoint = nextPoint;
+					cartObject.transform.position = new Vector2 (ob.transform.position.x, ob.transform.position.y);
+				}
+			} else {
+				anim.SetTrigger("Win");
+			}
+
+		}
+	}
+
+
+	public static bool compareArr(int[] arr1,int[] arr2){
+
+		bool[] flag=new bool[arr1.Length];//初始化一个bool数组，初始值全为false；
+
+		for(int i=0;i<arr1.Length;i++){
+
+			for(int j=0;j<arr2.Length;j++){
+
+				if(arr1[i]==arr2[j]) flag[i]=true;//遇到有相同的值，对应的bool数组的值设为true；
+
+			}
+
+		}
+
+		foreach(var item in flag){
+
+			if(item==false) return false; //遍历bool数组，还有false，就说明有不同的值，结果返回false。
+
+		}
+
+		return true;
+
 	}
 
 	private bool isButtonRealsed()

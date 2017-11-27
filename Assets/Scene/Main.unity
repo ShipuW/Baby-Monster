@@ -1766,8 +1766,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 1778088333}
   monster: {fileID: 1279866655824890, guid: 92ba280a48fc6454abcd260519b1be72, type: 2}
-  spawnTime: 5
-  maxCountMonster: 3
+  spawnTime: 20
+  maxCountMonster: 0
   defaultTile: {fileID: 21300000, guid: 812fcfd2135df4b3c8dd8efb39393e97, type: 3}
 --- !u!4 &1174205486
 Transform:
@@ -2610,7 +2610,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathPart: {fileID: 1907870824125432, guid: 6bbd4335a66bd42a38f34584db27b2b7, type: 2}
   pathHolder: {fileID: 1869959819526928, guid: 6b8acce3c251e430fa87b3f864a2b119, type: 2}
+  cart: {fileID: 1716820730796184, guid: 612c6a0c5590b4db39de2d3c556b21f7, type: 2}
   player: {fileID: 1778088329}
+  canvas: {fileID: 560548195}
 --- !u!95 &1778088331
 Animator:
   serializedVersion: 3
