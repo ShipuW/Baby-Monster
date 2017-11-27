@@ -9,6 +9,8 @@ public class LevelManager : MonoBehaviour {
 	private Texture2D[] mapData;
 	[SerializeField]
 	private MapElement[] mapElements;
+	[SerializeField]
+	private GameObject player;
 
 	[SerializeField]
 	private Sprite defaultTile;
@@ -46,13 +48,20 @@ public class LevelManager : MonoBehaviour {
 					MapElement newElement = Array.Find(mapElements,e => e.MyColor == c);
 					if (newElement != null) {
 
+
 						initMap(ColorUtility.ToHtmlStringRGBA(c),x,y);//init map
 
-
-						float x_position = GlobalVariable.originX + defaultTile.bounds.size.x * x;
-						float y_position = GlobalVariable.originY + defaultTile.bounds.size.y * y;
-
 						GameObject go = Instantiate (newElement.MyElementPrefab);
+
+						float x_position = GlobalVariable.originX + defaultTile.bounds.size.x * (x - 1) + go.GetComponent<SpriteRenderer> ().bounds.size.x;
+						float y_position = GlobalVariable.originY + defaultTile.bounds.size.y * (y - 1) + go.GetComponent<SpriteRenderer> ().bounds.size.y;
+
+
+						if (ColorUtility.ToHtmlStringRGBA (c) == "EA0FE7FF") {
+							player = GameObject.FindGameObjectWithTag("Player");
+							player.transform.position = new Vector2 ((float) (x_position + 0.5 * defaultTile.bounds.size.x), (float) (y_position + 0.5 * defaultTile.bounds.size.y));
+						}
+
 						go.transform.position = new Vector2(x_position,y_position); 
 						go.name = x.ToString()+',' + y.ToString();
 						if (newElement.MyTileTag == "Tree") {
@@ -75,11 +84,23 @@ public class LevelManager : MonoBehaviour {
 		case "B3DFE1FF": //grass
 			GlobalVariable.map [x, y] = 1;
 			break;
+		case "EA0FE7FF": //grass with player
+			GlobalVariable.map [x, y] = 1;
+			break;
 		case "FF9F23FF": //box
 			GlobalVariable.map [x, y] = 2;
 			break;
 		case "35C419FF": // tree
 			GlobalVariable.map [x, y] = 3;
+			break;
+		case "323F3FFF": // stone
+			GlobalVariable.map [x, y] = 4;
+			break;
+		case "FF0000FF": // start
+			GlobalVariable.map [x, y] = 5;
+			break;
+		case "0000FFFF": // end
+			GlobalVariable.map [x, y] = 6;
 			break;
 		default:
 			break;

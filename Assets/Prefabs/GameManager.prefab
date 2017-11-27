@@ -55,3 +55,5 @@ MonoBehaviour:
     type: 2}
   piecesManager: {fileID: 1839729206687860, guid: 0245f308fb74942959f202294dd61753,
     type: 2}
+  soundManager: {fileID: 1554509093409814, guid: 54675284b5b2f45f28ec0a69bcdc6c22,
+    type: 2}

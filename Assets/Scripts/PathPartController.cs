@@ -205,20 +205,7 @@ public class PathPartController : MonoBehaviour {
 	private void rotatedCurrentModel(){
 		PiecesManager.instance.RotatePiece ();
 	}
-
-	private int[,] getPartType(int type){
-		switch (type) {
-		case 0:
-			return GlobalVariable.part_model_T;
-		case 1:
-			return GlobalVariable.part_model_1;
-		case 2:
-			return GlobalVariable.part_model_L;
-		default:
-			return GlobalVariable.part_model_T;
-		}
-	}
-
+		
 	private int getHolderNumber(int[,] model)
 	{
 		int count = 0;

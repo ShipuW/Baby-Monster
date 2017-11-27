@@ -68,7 +68,7 @@ public class HoldingPieceManager : MonoBehaviour {
 		{
 			// objectA is not the attached GameObject, so you can do all your checks with it.
 			GameObject objectA = gameObject.transform.GetChild(i).gameObject;
-			objectA.transform.parent = null;
+			objectA.transform.SetParent(null);
 			Destroy (objectA);
 			// Optionally destroy the objectA if not longer needed
 		} 

@@ -10,7 +10,7 @@ public class MonsterController : MonoBehaviour {
 	public int health = 10;
 	public float chaseRange = 30.0f;
 	public float attackRange = 6.0f;
-
+	private float[] probabilityLabel = new float[2] { 0.6f, 0.4f };
 	PlayerHealth playerHealth;
 	PathHealth pathHealth;
 	private Animator anim;
@@ -24,11 +24,13 @@ public class MonsterController : MonoBehaviour {
 	private Vector3 direction;
 	[SerializeField]
 	GameObject indicator;
+	[SerializeField]
+	GameObject supply;
 	EnemyIndicatorManager indicatorManager;
 	int attackDamage = 10;
 	int MoveSpeed = 4;
-	Camera camera;
 	bool isDead;
+
 
 	// Use this for initialization
 	void Start () {
@@ -37,12 +39,11 @@ public class MonsterController : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 		anim.SetInteger ("StateNum", 0);
 		targetPlayer = true;
-		camera = Camera.main;
+//		camera = GetComponent<Camera> ();//Camera.main;
 		indicatorManager = GameObject.FindGameObjectWithTag ("EnemyIndicatorManager").GetComponent<EnemyIndicatorManager>();
 		indicator =indicatorManager.addIndicator ();
 		isDead = false;
 	}
-
 	// Update is called once per frame
 	void Update () {
 		if (isDead) {
@@ -85,9 +86,42 @@ public class MonsterController : MonoBehaviour {
 			anim.enabled=false;
 			GetComponent<SpriteRenderer> ().color = Color.grey;
 			Destroy (gameObject, 1f);
-			ScoreManager.score += scoreValue;
+//			ScoreManager.time += scoreValue;
+			if(CanGenerateSupply(probabilityLabel)){
+				Instantiate (supply, transform.position, Quaternion.identity);
+			}
 		}
 	}
+
+	float Choose (float[] probs) {
+
+		float total = 0;
+
+		foreach (float elem in probs) {
+			total += elem;
+		}
+
+		float randomPoint = Random.value * total;
+
+		for (int i= 0; i < probs.Length; i++) {
+			if (randomPoint < probs[i]) {
+				return i;
+			}
+			else {
+				randomPoint -= probs[i];
+			}
+		}
+		return probs.Length - 1;
+	}
+
+	bool CanGenerateSupply (float[] probs) {
+		if (Choose (probs) == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	void idle() {
 		anim.SetInteger ("StateNum", 0);
 		indicatorManager.hideIndicator (indicator);
@@ -141,7 +175,7 @@ public class MonsterController : MonoBehaviour {
 		}
 	}
 	Vector2 GetScreenPos() {
-		Vector3 screenPos = camera.WorldToViewportPoint(transform.position); //get viewport positions
+		Vector3 screenPos = GetComponent<Camera>().WorldToViewportPoint(transform.position); //get viewport positions
 
 		if(screenPos.x >= 0 && screenPos.x <= 1 && screenPos.y >= 0 && screenPos.y <= 1){
 			Debug.Log("already on screen, don't bother with the rest!");
@@ -150,7 +184,7 @@ public class MonsterController : MonoBehaviour {
 
 		Vector2 onScreenPos = new Vector2(screenPos.x-0.5f, screenPos.y-0.5f)*2; //2D version, new mapping
 		float max = Mathf.Max(Mathf.Abs(onScreenPos.x), Mathf.Abs(onScreenPos.y)); //get largest offset
-		onScreenPos = camera.ViewportToScreenPoint(onScreenPos/(max*2)+new Vector2(0.5f, 0.5f)); //undo mapping
+		onScreenPos = GetComponent<Camera>().ViewportToScreenPoint(onScreenPos/(max*2)+new Vector2(0.5f, 0.5f)); //undo mapping
 		//onScreenPos = onScreenPos/(max*2)+new Vector2(0.5f, 0.5f);
 		Debug.Log(onScreenPos);
 		return onScreenPos;

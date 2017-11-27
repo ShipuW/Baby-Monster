@@ -52,8 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapData:
-  - {fileID: 2800000, guid: 6b7c25cb3068241ef83880e7666cb1f1, type: 3}
-  - {fileID: 2800000, guid: a3575b27e02eb4829b6c1d117ae9308b, type: 3}
+  - {fileID: 2800000, guid: f57b8fb00dcad4d3a9e3a35db27ee14d, type: 3}
+  - {fileID: 2800000, guid: d397c406d089a4eb88d0bc1aa8efab31, type: 3}
   mapElements:
   - tileTage: Grass
     color: {r: 0.7019608, g: 0.8745099, b: 0.882353, a: 1}
@@ -67,5 +67,22 @@ MonoBehaviour:
     color: {r: 0.20784314, g: 0.76862746, b: 0.09803922, a: 1}
     elementPrefab: {fileID: 1442741830124386, guid: 9baab95a7bf244e2095bdd5c11179ca8,
       type: 2}
+  - tileTage: Stone
+    color: {r: 0.19607843, g: 0.24705882, b: 0.24705882, a: 1}
+    elementPrefab: {fileID: 1442741830124386, guid: 8cda1972ea2bf496cbf45e8f4867338b,
+      type: 2}
+  - tileTage: Start
+    color: {r: 1, g: 0, b: 0, a: 1}
+    elementPrefab: {fileID: 1442741830124386, guid: 95dfc12095f1948aeafbdbecd48ddba6,
+      type: 2}
+  - tileTage: End
+    color: {r: 0, g: 0, b: 1, a: 1}
+    elementPrefab: {fileID: 1442741830124386, guid: 78b44cff14e2f47688623a9577a63714,
+      type: 2}
+  - tileTage: Grass
+    color: {r: 0.91764706, g: 0.05882353, b: 0.90588236, a: 1}
+    elementPrefab: {fileID: 1727604020175742, guid: 6737b490842854853ae6e1e3afea9916,
+      type: 2}
+  player: {fileID: 0}
   defaultTile: {fileID: 21300000, guid: 206bc368386d7437fb630883746dd520, type: 3}
   map: {fileID: 0}
