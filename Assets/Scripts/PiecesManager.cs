@@ -7,9 +7,9 @@ public class PiecesManager : MonoBehaviour {
 	public static PiecesManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
 
 	public int [,] currentPiece = new int [3, 3] {
-		{1, 1, 0} ,		/*  初始化索引号为 0 的行 */
-		{1, 0, 0} , 	/*  初始化索引号为 1 的行 */
-		{1, 0, 0}   	/*  初始化索引号为 2 的行 */
+		{0, 0, 0} ,		/*  初始化索引号为 0 的行 */
+		{0, 0, 0} , 	/*  初始化索引号为 1 的行 */
+		{0, 0, 0}   	/*  初始化索引号为 2 的行 */
 	};
 
 	// Use this for initialization

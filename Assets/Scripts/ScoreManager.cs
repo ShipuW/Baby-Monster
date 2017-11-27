@@ -12,6 +12,17 @@ public class ScoreManager : MonoBehaviour
 
 	void Awake ()
 	{
+		switch (GlobalVariable.level) {
+		case 1:
+			startTime = 60;
+			break;
+		case 2:
+			startTime = 200;
+			break;
+		case 3:
+			startTime = 999;
+			break;
+		}
 		text = GetComponent <Text> ();
 		time = startTime;
 		StartTiming ();
