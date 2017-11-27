@@ -14,6 +14,8 @@ public class PathPartController : MonoBehaviour {
 	private GameObject cartObject;
 	[SerializeField]
 	private GameObject player;
+	[SerializeField]
+	private GameObject canvas;
 
 	private bool connected = false;
 
@@ -68,7 +70,7 @@ public class PathPartController : MonoBehaviour {
 	void Start () {
 		WorldStartPos = Camera.main.ScreenToWorldPoint (new Vector3(0,0));
 		the_path  = new bool[GlobalVariable.map.GetLength(0), GlobalVariable.map.GetLength(1)]; 
-		anim = GetComponent<Animator>();
+		anim = canvas.GetComponent<Animator>();
 	}
 
 	public void ButtonPutUp()
@@ -176,6 +178,9 @@ public class PathPartController : MonoBehaviour {
 						y = y - 1;
 					} else if (the_path [x, y + 1]) {
 						y = y + 1;
+					} else {
+						anim.SetTrigger("GameWin");
+
 					}
 
 					nextPoint = new int[] { x, y };
@@ -207,8 +212,6 @@ public class PathPartController : MonoBehaviour {
 					currPoint = nextPoint;
 					cartObject.transform.position = new Vector2 (ob.transform.position.x, ob.transform.position.y);
 				}
-			} else {
-				anim.SetTrigger("Win");
 			}
 
 		}

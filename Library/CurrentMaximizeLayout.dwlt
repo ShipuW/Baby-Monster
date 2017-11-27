@@ -19,11 +19,11 @@ MonoBehaviour:
     x: 0
     y: 30
     width: 1680
-    height: 883
+    height: 882
   m_MinSize: {x: 683, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 7039
+  controlID: 121
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -51,14 +51,14 @@ MonoBehaviour:
     width: 1004
     height: 514
   m_SceneLighting: 1
-  lastFramingTime: 10387.764610052109
+  lastFramingTime: 952.8556420207024
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1626.6869, y: -14.292173, z: -27.561213}
+    m_Target: {x: 219.74265, y: -6.0381203, z: -3.6490471}
     speed: 2
-    m_Value: {x: 1626.6869, y: -14.292173, z: -27.561213}
+    m_Value: {x: 219.74265, y: -6.0381203, z: -3.6490471}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -85,9 +85,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 2778.8643
+    m_Target: 356.70255
     speed: 2
-    m_Value: 2778.8643
+    m_Value: 356.70255
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -118,11 +118,11 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1339
-    height: 883
+    height: 882
   m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 7040
+  controlID: 51
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 7041
+  controlID: 52
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -200,9 +200,9 @@ MonoBehaviour:
     height: 514
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a2580000a608faff
-    m_LastClickedID: -391002
-    m_ExpandedIDs: 464ffeff0652feffc853feff60b8ffff2ad2ffffaaf9fffff4ffffff000000002248000090580000a2580000b0580000
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: 0cdbffffa6fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -220,7 +220,8 @@ MonoBehaviour:
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 5}
     m_SearchString: 
-  m_ExpandedScenes: []
+  m_ExpandedScenes:
+  - Menu
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -251,7 +252,7 @@ MonoBehaviour:
   - {fileID: 9}
   - {fileID: 10}
   m_Selected: 0
-  m_LastSelected: 3
+  m_LastSelected: 1
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -384,16 +385,14 @@ MonoBehaviour:
     m_KeySerializationHelper:
     - {fileID: 1107116120568139070, guid: 795f91c328467403abf5ec18e9e696ee, type: 2}
     - {fileID: 1107249675568447174, guid: ebd0cd90c7d4c4eb4b403ca7c3f3acc0, type: 2}
+    - {fileID: 1107751694996186030, guid: 6fa63bccf39ab4532ac49fda23ec5a30, type: 2}
     m_ValueSerializationHelper:
     - {x: 552.4, y: 258.79614}
-    - {x: 614.4, y: 254.79614}
+    - {x: 358.39612, y: 294.81177}
+    - {x: 550.3883, y: 392.79614}
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: ebd0cd90c7d4c4eb4b403ca7c3f3acc0,
-    type: 2}
-  m_BreadCrumbs:
-  - m_Target: {fileID: 1107249675568447174, guid: ebd0cd90c7d4c4eb4b403ca7c3f3acc0,
-      type: 2}
-    m_ScrollPosition: {x: 0, y: 0}
+  m_AnimatorController: {fileID: 0}
+  m_BreadCrumbs: []
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
   blendTreeGraph: {fileID: 0}
@@ -421,7 +420,7 @@ MonoBehaviour:
     x: 0
     y: 535
     width: 1339
-    height: 348
+    height: 347
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
   m_ActualView: {fileID: 12}
@@ -455,7 +454,7 @@ MonoBehaviour:
     x: 0
     y: 629
     width: 1337
-    height: 327
+    height: 326
   m_SearchFilter:
     m_NameFilter: 
     m_ClassNames: []
@@ -468,19 +467,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Animation
+    - Assets/Scene
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Animation
+  - Assets/Scene
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: /Users/shipu/Desktop/Baby-Monster
+  m_LastProjectPath: /Users/shipu/Desktop/baby-monster
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 95}
-    m_SelectedIDs: b4420000
-    m_LastClickedID: 17076
-    m_ExpandedIDs: 00000000c2340000ee34000038350000d03d0000fa3d0000fa3e00000a400000864200009c420000fa430000fc430000fe43000000440000024400000444000006440000084400000a4400000c4400000e44000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 106.00781}
+    m_SelectedIDs: 78340000
+    m_LastClickedID: 13432
+    m_ExpandedIDs: 000000004c290000c029000078320000a8320000a8330000d0340000ae370000c4370000ea3a0000ec3a0000ee3a0000f03a0000f23a0000f43a0000f63a0000f83a0000fa3a0000fc3a0000fe3a000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -508,7 +507,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c2340000ee34000038350000d03d0000fa3d0000fa3e00000a400000864200009c420000fa430000fc430000fe43000000440000024400000444000006440000084400000a4400000c4400000e44000000ca9a3bffffff7f
+    m_ExpandedIDs: 000000004c290000c029000078320000a8320000a8330000d0340000ae370000c4370000ea3a0000ec3a0000ee3a0000f03a0000f23a0000f43a0000f63a0000f83a0000fa3a0000fc3a0000fe3a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -533,10 +532,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: a2580000a608faff
-    m_LastClickedInstanceID: -391002
-    m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: c6230000
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: c6230000422b0000622900008238000070360000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -606,7 +605,7 @@ MonoBehaviour:
     x: 1339
     y: 0
     width: 341
-    height: 883
+    height: 882
   m_MinSize: {x: 277, y: 71}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 15}
@@ -639,7 +638,7 @@ MonoBehaviour:
     x: 1341
     y: 94
     width: 339
-    height: 862
+    height: 861
   m_ScrollPosition: {x: 0, y: 0}
   m_InspectorMode: 0
   m_PreviewResizer:
