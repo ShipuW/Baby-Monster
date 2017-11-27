@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour {
 	private int currentBombNum;
 	private Animator anim;
 
+	public AudioClip bricksPick;
+
 	
     // Use this for initialization
     void Start()
@@ -112,6 +114,7 @@ public class PlayerController : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other) 
     {
 		if (other.gameObject.CompareTag ("Piece")) {
+//			SoundManager.instance.PlaySingle (bricksPick);
 			other.gameObject.SetActive (false);
 			PiecesManager.instance.SetCurrentPiece(other.GetComponent<PickupPiece> ().piece);
 			holdingPieceManager.updatePiece ();

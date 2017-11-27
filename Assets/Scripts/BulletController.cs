@@ -15,6 +15,7 @@ public class BulletController : MonoBehaviour {
     public float radius;
     public float bombDelayTime;
 	private Animator anim;
+	public AudioClip bombExplode;
 	private Vector3 WorldStartPos
 	{
 		get{
@@ -43,7 +44,7 @@ public class BulletController : MonoBehaviour {
 			bulletBody.velocity = Vector3.zero;
 			anim.SetTrigger("explode");
 
-       
+			SoundManager.instance.PlaySingle(bombExplode);
 
         }, bombDelayTime));
     }
@@ -122,6 +123,8 @@ public class BulletController : MonoBehaviour {
 	{
 		if (other.gameObject.CompareTag("Monster")) { 
 			anim.SetTrigger("explode");
+//			SoundManager.instance.PlaySingle(bombExplode);
+
 		} 
 	}
 

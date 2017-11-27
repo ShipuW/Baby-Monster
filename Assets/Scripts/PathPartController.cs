@@ -21,7 +21,8 @@ public class PathPartController : MonoBehaviour {
 
 	private bool isTouchDown = false; //是否点击选中零件了按钮
 	private bool isNew = true;	//要生成一个新零件吗
-	private Vector3 lastMousePosition = Vector3.zero;  
+	private Vector3 lastMousePosition = Vector3.zero; 
+
 	private bool isMovementTouched = false;
 	private bool[] positionCheck;
 	private ArrayList mapOccupiedList = new ArrayList ();
@@ -43,6 +44,8 @@ public class PathPartController : MonoBehaviour {
 	private int[] nextPoint = new int[] {0, 0};
 
 	Animator anim;
+
+	public AudioClip bricksStack;
 
 	public void moveIsHappening()
 	{
@@ -116,6 +119,7 @@ public class PathPartController : MonoBehaviour {
 					isNew = true;
 					isTouchDown = false;
 					Destroy (holder_parent);
+//						SoundManager.instance.RandomizeSfx (bricksStack);
 					//判断是否联通
 					if(existPath(GlobalVariable.map,the_path,GlobalVariable.start,GlobalVariable.end))
 					{	
@@ -388,7 +392,7 @@ public class PathPartController : MonoBehaviour {
 		if (X < 0 || Y < 0 || X >= 27 || Y >= 18) 
 			return false;
 		
-		if (GlobalVariable.map [X,Y] != 3 && GlobalVariable.map[X,Y] != 99 && GlobalVariable.map[X,Y] != 2) {
+		if (GlobalVariable.map[X,Y] != 99 && GlobalVariable.map[X,Y] != 2 && GlobalVariable.map[X,Y] != 3 && GlobalVariable.map[X,Y] != 4 && GlobalVariable.map[X,Y] != 5 && GlobalVariable.map[X,Y] != 6) {
 			return true;
 		}
 		return false;
