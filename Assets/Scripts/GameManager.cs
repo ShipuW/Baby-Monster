@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;       //Allows us to use Lists. 
 
 public class GameManager : MonoBehaviour
@@ -10,12 +10,11 @@ public class GameManager : MonoBehaviour
     public GameObject levelManager;                   //Store a reference to our BoardManager which will set up the level.
 	public GameObject piecesManager;
 	public GameObject soundManager;
-	private int level = 3;                                  //Current level number, expressed in game as "Day 1".
-
 
     //Awake is always called before any Start functions
     void Awake()
     {
+		
         //Check if instance already exists
         if (instance == null)
             
@@ -39,6 +38,9 @@ public class GameManager : MonoBehaviour
     //Initializes the game for each level.
     void InitGame()
     {
+
+
+
         Instantiate(levelManager);
 
 		if (PiecesManager.instance == null){

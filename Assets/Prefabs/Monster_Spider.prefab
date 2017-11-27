@@ -20,11 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 224274830207028566}
   - component: {fileID: 212951055560068926}
-  - component: {fileID: 50185255041329270}
   - component: {fileID: 114319519175192534}
   - component: {fileID: 95574176970524104}
   - component: {fileID: 222511017257545104}
   - component: {fileID: 58113629165079998}
+  - component: {fileID: 50867614004413916}
   m_Layer: 0
   m_Name: Monster_Spider
   m_TagString: Monster
@@ -32,7 +32,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!50 &50185255041329270
+--- !u!50 &50867614004413916
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
@@ -41,7 +41,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 1279866655824890}
   m_BodyType: 0
   m_Simulated: 1
-  m_UseFullKinematicContacts: 1
+  m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 100
   m_LinearDrag: 0
@@ -50,7 +50,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!58 &58113629165079998
 CircleCollider2D:

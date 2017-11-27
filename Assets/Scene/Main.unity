@@ -919,9 +919,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxBombNum: 3
   currentBombNum: 3
-  speed: 0
-  process: {fileID: 0}
-  indicator: {fileID: 0}
+  speed: 1
+  process: {fileID: 1904804134}
+  indicator: {fileID: 1748588948}
 --- !u!1 &503431591
 GameObject:
   m_ObjectHideFlags: 0

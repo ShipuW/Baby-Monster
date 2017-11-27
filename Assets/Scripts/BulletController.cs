@@ -39,7 +39,7 @@ public class BulletController : MonoBehaviour {
                 return;
             }
 			Debug.Log("stop the bullet");
-			bulletBody.isKinematic = true;
+			bulletBody.isKinematic = false;
 			bulletBody.velocity = Vector3.zero;
 			anim.SetTrigger("explode");
 
@@ -57,6 +57,8 @@ public class BulletController : MonoBehaviour {
 	}
 
     void finishExplosion() {
+		if (gameObject == null)
+			return;
 		int x = GetXFromPosition(gameObject.transform.position.x);
 		int y = GetYFromPosition(gameObject.transform.position.y);
 	
@@ -116,6 +118,13 @@ public class BulletController : MonoBehaviour {
 		return newMatrix;
 
     }
+
+	void OnCollisionEnter2D(Collider2D other) 
+	{
+		if (other.gameObject.CompareTag("Monster")) { 
+			finishExplosion ();
+		} 
+	}
 
 	
 }
