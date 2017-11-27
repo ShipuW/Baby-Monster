@@ -43,8 +43,7 @@ public class BulletController : MonoBehaviour {
 			bulletBody.velocity = Vector3.zero;
 			anim.SetTrigger("explode");
 
-			
-            
+       
 
         }, bombDelayTime));
     }
@@ -57,6 +56,8 @@ public class BulletController : MonoBehaviour {
 	}
 
     void finishExplosion() {
+		if (gameObject == null)
+			return;
 		int x = GetXFromPosition(gameObject.transform.position.x);
 		int y = GetYFromPosition(gameObject.transform.position.y);
 	
@@ -116,6 +117,13 @@ public class BulletController : MonoBehaviour {
 		return newMatrix;
 
     }
+
+	void OnCollisionEnter2D(Collision2D other) 
+	{
+		if (other.gameObject.CompareTag("Monster")) { 
+			anim.SetTrigger("explode");
+		} 
+	}
 
 	
 }

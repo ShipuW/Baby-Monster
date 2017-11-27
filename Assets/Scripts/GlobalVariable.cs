@@ -13,6 +13,7 @@ public static class GlobalVariable
 	 * 6: 终点
 	 * 99: path
 	 */
+	public static int level;
 
 	public static float originX;
 

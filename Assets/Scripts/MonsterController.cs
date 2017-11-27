@@ -189,5 +189,7 @@ public class MonsterController : MonoBehaviour {
 		Debug.Log(onScreenPos);
 		return onScreenPos;
 	}
+
+
 		
 }

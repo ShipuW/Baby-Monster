@@ -54,6 +54,10 @@ MonoBehaviour:
   mapData:
   - {fileID: 2800000, guid: f57b8fb00dcad4d3a9e3a35db27ee14d, type: 3}
   - {fileID: 2800000, guid: d397c406d089a4eb88d0bc1aa8efab31, type: 3}
+  - {fileID: 2800000, guid: 9b163f705b6a147ce88e0df5abf6fc3a, type: 3}
+  - {fileID: 2800000, guid: d1f700694183e42f3bfa58a038f621c4, type: 3}
+  - {fileID: 2800000, guid: b55feb20867da475eb5fe88c3828c10b, type: 3}
+  - {fileID: 2800000, guid: c3d04ac1e29244ccdab540846f12b178, type: 3}
   mapElements:
   - tileTage: Grass
     color: {r: 0.7019608, g: 0.8745099, b: 0.882353, a: 1}

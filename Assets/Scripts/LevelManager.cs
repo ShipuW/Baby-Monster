@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 using System;
 
 public class LevelManager : MonoBehaviour {
+
 
 	[SerializeField]
 	private Texture2D[] mapData;
@@ -41,13 +43,27 @@ public class LevelManager : MonoBehaviour {
 		GlobalVariable.originX = WorldStartPos.x;
 		GlobalVariable.originY = WorldStartPos.y;
 		map = GameObject.Find ("MapCollection").transform;
-		for (int i = 0; i < mapData.Length; i++) {
+		int start;
+		switch (GlobalVariable.level) {
+		case 1:
+			start = 0;
+			break;
+		case 2:
+			start = 2;
+			break;
+		case 3:
+			start = 4;
+			break;
+		default:
+			start = 1;
+			break;
+		}
+		for (int i = start; i < mapData.Length && i < start + 2; i++) {
 			for (int x = 0; x < mapData [i].width; x++) {
 				for (int y = 0; y < mapData [i].height; y++) {
 					Color c = mapData [i].GetPixel (x, y);
 					MapElement newElement = Array.Find(mapElements,e => e.MyColor == c);
 					if (newElement != null) {
-
 
 						initMap(ColorUtility.ToHtmlStringRGBA(c),x,y);//init map
 
