@@ -13,6 +13,9 @@ TagManager:
   - Ground
   - Piece
   - EnemyIndicatorManager
+  - start_easy
+  - start_medium
+  - start_hard
   layers:
   - Default
   - TransparentFX

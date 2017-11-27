@@ -38,8 +38,6 @@ public class PlayerController : MonoBehaviour {
 
 		if(circleProcess.currentBombNum == 0)
 			return;
-		//float moveHorizontal = Input.GetAxis ("Horizontal");
-
 			// 初始化子弹
 		Rigidbody2D bulletInstance = Instantiate(Bullet, transform.position+move_offset, new Quaternion(0, 0, 0, 0)) as Rigidbody2D;
 		// velocity直接给物体一个固定的移动速度
@@ -84,12 +82,6 @@ public class PlayerController : MonoBehaviour {
 		float PositionY = move.y; //获取摇杆偏离Y坐标
 		Vector2 direction = Vector2.zero;
 		if (PositionX != 0 || PositionY != 0) {
-//			transform.LookAt(new Vector3 (transform.position.x + PositionX, transform.position.y + PositionY, 0));
-//			transform.Translate (Vector3.forward * Time.deltaTime * movespeed);  
-//
-//			Quaternion rotation = Quaternion.LookRotation
-//				(transform.position - transform.position, transform.TransformDirection(Vector3.up));
-//			transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
 			if (PositionX > 0) {
 				direction += Vector2.right;
 			} 
