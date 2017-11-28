@@ -129,13 +129,15 @@ public class PathPartController : MonoBehaviour {
 							connected = true;
 							int x = GlobalVariable.start[0];
 							int y = GlobalVariable.start[1];
-
+							the_path[x, y] = true;
+							the_path[GlobalVariable.end[0], GlobalVariable.end[1]] = true;
 							currPoint = GlobalVariable.start;
 							nextPoint = GlobalVariable.start;
 							GameObject ob = GameObject.Find(x.ToString()+','+y.ToString());
 							
 							cartObject = Instantiate (cart, ob.transform.position, Quaternion.identity);
 							CameraController.FollowCart(cartObject);
+								anim.SetTrigger("GameWin");
 //							player.transform.position = new Vector2(ob.transform.position.x,ob.transform.position.y);
 						}
 					}
@@ -184,7 +186,6 @@ public class PathPartController : MonoBehaviour {
 						y = y + 1;
 					} else {
 						anim.SetTrigger("GameWin");
-
 					}
 
 					nextPoint = new int[] { x, y };
@@ -213,7 +214,7 @@ public class PathPartController : MonoBehaviour {
 				if (symbolX != 0 || symbolY != 0) {
 					cartObject.transform.position = new Vector2 ((float)(cartObject.transform.position.x + symbolX * 0.5), (float)(cartObject.transform.position.y + symbolY * 0.5));
 				} else {
-					currPoint = nextPoint;
+					currPoint = new int[] {nextPoint[0], nextPoint[1]};
 					cartObject.transform.position = new Vector2 (ob.transform.position.x, ob.transform.position.y);
 				}
 			}

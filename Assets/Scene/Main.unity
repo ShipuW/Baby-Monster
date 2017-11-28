@@ -1563,7 +1563,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1035044242}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 653, y: 0, z: 0}
+  m_LocalPosition: {x: 553, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 560548199}
@@ -1571,7 +1571,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -400, y: 0}
+  m_AnchoredPosition: {x: -500, y: 0}
   m_SizeDelta: {x: 115, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1035044244
@@ -1671,7 +1671,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.36862746, g: 0.627451, b: 0.97647065, a: 0.966}
+  m_BackGroundColor: {r: 0.15686275, g: 0.45882353, b: 0.17254902, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1766,8 +1766,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 1778088333}
   monster: {fileID: 1279866655824890, guid: 92ba280a48fc6454abcd260519b1be72, type: 2}
-  spawnTime: 20
-  maxCountMonster: 0
+  spawnTime: 10
+  maxCountMonster: 1
   defaultTile: {fileID: 21300000, guid: 812fcfd2135df4b3c8dd8efb39393e97, type: 3}
 --- !u!4 &1174205486
 Transform:
